@@ -35,6 +35,19 @@ h3{
     font-size: 80%;
     font-family: 'Nunito', sans-serif;
 }
+
+.BIT-link{
+    color: #66BFBF;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+.BIT-link:hover{
+    color: #11999E;
+}
+
+
 a:hover{
     color: #EAF6F6;
 }
