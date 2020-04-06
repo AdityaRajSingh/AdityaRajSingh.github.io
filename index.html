@@ -1047,13 +1047,14 @@
               </p>
               <form
                 class="js-form"
-                action="http://localhost:5000/msgs"
+                action="https://formspree.io/mrgapwre"
                 method="POST"
               >
                 <div class="form-group">
                   <input
                     class="form-field js-field-name"
                     type="text"
+                    name="name"
                     placeholder="Your name"
                     required
                   />
@@ -1066,6 +1067,7 @@
                   <input
                     class="form-field js-field-email"
                     type="email"
+                    name="_replyto"
                     placeholder="Your e-mail"
                     required
                   />
@@ -1077,6 +1079,7 @@
                 <div class="form-group">
                   <textarea
                     class="form-field js-field-message"
+                    name="message"
                     placeholder="Type the message here"
                     required
                   ></textarea>
