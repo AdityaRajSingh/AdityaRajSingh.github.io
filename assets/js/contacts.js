@@ -20,8 +20,17 @@ function validateForm(selector) {
 
 validateForm('.js-form .form-field');
 
-var form = document.querySelector('.js-form');
-var formName = '.js-form';
+
+
+
+
+
+
+
+
+
+// var form = document.querySelector('.js-form');
+// var formName = '.js-form';
 
 // form.addEventListener('submit', function(e){
 //     submitForm(e, formName);
