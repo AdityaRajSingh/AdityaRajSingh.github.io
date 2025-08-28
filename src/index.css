@@ -1,0 +1,487 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Inspired by modern minimalism */
+
+@layer base {
+  :root {
+    /* Modern blue-purple palette - Light Mode */
+    --background: 270 18% 96%;
+    --foreground: 224 25% 25%;
+
+    /* Surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 224 25% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 25% 25%;
+
+    /* Primary - #3D52A0 */
+    --primary: 224 45% 44%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary - #ADBBD2 */
+    --secondary: 220 25% 75%;
+    --secondary-foreground: 224 25% 25%;
+
+    /* Accent colors - #7091E6 */
+    --accent: 224 75% 70%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Muted - #EDE8F5 */
+    --muted: 270 25% 93%;
+    --muted-foreground: 224 16% 38%;
+
+    /* Modern gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(224, 45%, 44%), hsl(224, 75%, 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(224, 75%, 70%), hsl(220, 25%, 75%));
+    --gradient-accent: linear-gradient(135deg, hsl(270, 25%, 93%), hsl(220, 25%, 75%));
+    --gradient-soft: linear-gradient(135deg, hsl(270, 18%, 96%), hsl(270, 25%, 93%));
+
+    /* Hero (light mode) tokens */
+    --hero-light-1: 230 40% 97%;
+    --hero-light-2: 236 40% 96%;
+    --hero-light-3: 258 36% 95%;
+    /* Primary hue used for halo focus */
+    --hero-halo-primary: 224 65% 66%;
+
+    /* Interactive states */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 224 45% 44%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Premium dark mode inspired by Shopify Editions */
+    --background: 224 25% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 224 20% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 224 20% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Brighter primary for dark mode */
+    --primary: 224 75% 75%;
+    --primary-foreground: 224 25% 6%;
+
+    --secondary: 224 15% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 224 15% 12%;
+    --muted-foreground: 0 0% 78%;
+
+    /* Glowing accent */
+    --accent: 224 85% 80%;
+    --accent-foreground: 224 25% 6%;
+
+    --destructive: 0 65% 65%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 224 15% 18%;
+    --input: 224 15% 18%;
+    --ring: 224 75% 75%;
+
+    /* Dark mode gradients with glow */
+    --gradient-primary: linear-gradient(135deg, hsl(224, 75%, 75%), hsl(224, 85%, 80%));
+    --gradient-secondary: linear-gradient(135deg, hsl(224, 20%, 10%), hsl(224, 15%, 15%));
+    --gradient-accent: linear-gradient(135deg, hsl(224, 15%, 12%), hsl(224, 20%, 10%));
+    --gradient-soft: linear-gradient(135deg, hsl(224, 25%, 6%), hsl(224, 15%, 12%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Smooth transitions for theme changes */
+  *,
+  *::before,
+  *::after {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      fill 0.3s ease,
+      stroke 0.3s ease,
+      opacity 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+}
+
+@layer utilities {
+
+  /* Modern gradient utilities */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .bg-gradient-soft {
+    background: var(--gradient-soft);
+  }
+
+  /* Advanced gradient utilities for hero section */
+  .bg-gradient-layered {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% 45%, hsl(var(--hero-halo-primary, var(--primary)) / 0.18) 0%, hsl(var(--hero-halo-primary, var(--primary)) / 0.10) 25%, transparent 60%),
+      radial-gradient(ellipse 1200px 600px at 50% -10%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 1100px 550px at 50% 115%, hsl(var(--accent) / 0.10) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--hero-light-1)) 0%, hsl(var(--hero-light-2)) 50%, hsl(var(--hero-light-3)) 100%);
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse 60% 40% at 50% 45%, var(--tw-gradient-stops));
+  }
+
+  /* Enhanced light mode gradients with dramatic contrast */
+  .bg-gradient-depth {
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 20%, hsl(var(--primary) / 0.45) 0%, hsl(var(--primary) / 0.15) 40%, transparent 70%),
+      radial-gradient(ellipse 100% 60% at 50% 80%, hsl(var(--accent) / 0.35) 0%, hsl(var(--accent) / 0.08) 50%, transparent 80%),
+      linear-gradient(180deg, hsl(220 30% 88%) 0%, hsl(220 25% 92%) 50%, hsl(220 20% 95%) 100%);
+  }
+
+  /* Building section - Innovation and creativity focus */
+  .bg-gradient-building {
+    /* Section: Building – innovation glow mirroring hero */
+    background:
+      radial-gradient(ellipse 900px 420px at 50% 40%, hsl(var(--primary) / 0.18) 0%, hsl(var(--primary) / 0.08) 45%, transparent 70%),
+      radial-gradient(ellipse 1100px 550px at 50% 115%, hsl(var(--accent) / 0.10) 0%, transparent 65%),
+      linear-gradient(180deg, hsl(var(--hero-light-2)) 0%, hsl(var(--hero-light-3)) 60%, hsl(220 20% 92%) 100%);
+  }
+
+  /* Connect section - Warm and inviting */
+  .bg-gradient-connect {
+    /* Section: Connect – CTA focus mirroring hero */
+    background:
+      radial-gradient(ellipse 800px 380px at 50% 30%, hsl(var(--primary) / 0.20) 0%, hsl(var(--primary) / 0.10) 45%, transparent 70%),
+      radial-gradient(ellipse 1000px 500px at 50% 115%, hsl(var(--accent) / 0.12) 0%, transparent 65%),
+      linear-gradient(200deg, hsl(220 26% 90%) 0%, hsl(220 22% 92%) 50%, hsl(270 18% 94%) 100%);
+  }
+
+  /* Journey style backgrounds for alternating sections */
+  .bg-gradient-journey {
+    /* Light: Journey – hero-inspired, deeper mid-tone for separation */
+    background:
+      radial-gradient(ellipse 900px 420px at 12% 25%, hsl(var(--primary) / 0.20) 0%, transparent 60%),
+      radial-gradient(ellipse 1000px 500px at 88% 75%, hsl(var(--accent) / 0.16) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--hero-light-2)) 0%, hsl(var(--hero-light-3)) 55%, hsl(220 22% 90%) 100%);
+  }
+
+  /* Recommendations section - Testimonial warmth */
+  .bg-gradient-recommendations {
+    /* Light: Kind Words – soft variant of Journey for testimonials */
+    background:
+      radial-gradient(ellipse 800px 380px at 50% 30%, hsl(var(--primary) / 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 1000px 520px at 55% 80%, hsl(var(--accent) / 0.14) 0%, transparent 65%),
+      linear-gradient(180deg, hsl(var(--hero-light-3)) 0%, hsl(220 22% 92%) 55%, hsl(220 20% 90%) 100%);
+  }
+
+  /* Dark mode maintains existing rich gradients */
+  .dark .bg-gradient-depth {
+    background:
+      radial-gradient(ellipse at top, hsl(var(--primary) / 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, hsl(var(--accent) / 0.18) 0%, transparent 50%);
+  }
+
+  .dark .bg-gradient-layered {
+    background:
+      radial-gradient(ellipse 1200px 600px at 50% -10%, hsl(var(--primary) / 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 1100px 550px at 50% 115%, hsl(var(--accent) / 0.14) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.12) 50%, hsl(var(--background)) 100%);
+  }
+
+  /* Dark mode building section - Innovation glow */
+  .dark .bg-gradient-building {
+    background:
+      radial-gradient(ellipse 1000px 500px at 50% 35%, hsl(var(--primary) / 0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 1100px 550px at 50% 115%, hsl(var(--accent) / 0.14) 0%, transparent 65%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.25) 55%, hsl(var(--card) / 0.9) 100%);
+  }
+
+  /* Dark mode connect section - Warm invitation */
+  .dark .bg-gradient-connect {
+    background:
+      radial-gradient(ellipse 900px 450px at 50% 28%, hsl(var(--primary) / 0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 1100px 550px at 50% 115%, hsl(var(--accent) / 0.18) 0%, transparent 65%),
+      linear-gradient(200deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.35) 55%, hsl(var(--card) / 0.8) 100%);
+  }
+
+  /* Dark mode recommendations section - Testimonial depth */
+  .dark .bg-gradient-recommendations {
+    background:
+      linear-gradient(145deg, hsl(var(--muted) / 0.20) 0%, hsl(var(--muted) / 0.06) 35%, transparent 70%),
+      radial-gradient(ellipse 90% 65% at 60% 40%, hsl(var(--secondary) / 0.12) 0%, transparent 70%),
+      linear-gradient(195deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.25) 45%, hsl(var(--card) / 0.75) 100%);
+  }
+
+  /* Dark mode journey styles for alternating sections */
+  .dark .bg-gradient-journey {
+    background:
+      radial-gradient(ellipse 85% 60% at 15% 30%, hsl(var(--accent) / 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 70%, hsl(var(--primary) / 0.14) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.30) 55%, hsl(var(--card) / 0.85) 100%);
+  }
+
+  .dark .bg-gradient-journey-depth {
+    background:
+      radial-gradient(ellipse 100% 70% at 70% 20%, hsl(var(--muted) / 0.3) 0%, hsl(var(--muted) / 0.1) 50%, transparent 80%),
+      linear-gradient(225deg, hsl(var(--secondary) / 0.2) 0%, hsl(var(--secondary) / 0.05) 60%, transparent 100%);
+  }
+
+  /* Component-specific gradients for icons */
+  .bg-gradient-teal {
+    background: linear-gradient(135deg, hsl(224, 45%, 44%), hsl(224, 75%, 70%));
+  }
+
+  .bg-gradient-purple {
+    background: linear-gradient(135deg, hsl(224, 75%, 70%), hsl(220, 25%, 75%));
+  }
+
+  .bg-gradient-warm {
+    background: linear-gradient(135deg, hsl(220, 25%, 75%), hsl(270, 25%, 93%));
+  }
+
+  /* Icon colors with proper contrast for both modes */
+  .icon-contrast {
+    color: white;
+  }
+
+  .dark .icon-contrast {
+    color: white;
+  }
+
+  /* Premium glow effects for dark mode */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.4);
+  }
+
+  .dark .glow-card {
+    box-shadow:
+      0 0 0 1px hsl(var(--border)),
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 20px hsl(var(--primary) / 0.1);
+  }
+
+  /* Enhanced dark mode card styling */
+  .dark .card-glow {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 25px hsl(var(--primary) / 0.08),
+      inset 0 1px 0 hsl(var(--primary) / 0.1);
+  }
+
+  /* Animation utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.25));
+  }
+
+  .dark .animate-sparkle {
+    filter: drop-shadow(0 0 8px hsl(var(--accent) / 0.35));
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Rotating subtitle animation: slow, smooth crossfade + gentle float to match star motion */
+  /* Rotating subtitle animation: smooth crossfade + subtle glow pulse */
+  .transition-subtitle {
+    opacity: 0;
+    transform: scale(0.995);
+    /* start slightly smaller */
+    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    /* start with no glow */
+    animation-name: subtitle-twinkle;
+    animation-duration: 18s;
+    /* your reduced duration */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-delay: calc(var(--i) * 6s);
+  }
+
+  @keyframes subtitle-twinkle {
+
+    /* 
+    Glow increases with fade-in, holds steady, then gently fades out
+    to match the elegance of background stars.
+  */
+    0% {
+      opacity: 0;
+      transform: scale(0.995);
+      text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+
+    6% {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+    }
+
+    27% {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+    }
+
+    33.33% {
+      opacity: 0;
+      transform: scale(0.995);
+      text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0.995);
+      text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+  }
+
+
+
+
+
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Backdrop blur effect */
+  .backdrop-blur-soft {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Blog-specific prose styles */
+  .prose {
+    max-width: none;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose h1 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  .prose h2 {
+    font-size: 1.875rem;
+    line-height: 1.3;
+  }
+
+  .prose h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .prose p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .prose ul,
+  .prose ol {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.7;
+  }
+
+  .prose code {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(180deg);
+  }
+}
