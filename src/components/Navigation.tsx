@@ -3,13 +3,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from '@/components/ThemeToggle';
+import { createNavigationHandler } from '@/lib/navigation';
 
 const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const nav = createNavigationHandler(navigate);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,22 +25,23 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    if (isHomePage) {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate(`/#${sectionId}`);
-    }
-    setIsMenuOpen(false);
-  };
-
   const handleLogoClick = () => {
-    navigate('/');
+    nav.goToHome();
     setIsMenuOpen(false);
   };
 
-  const handleNavClick = (path: string) => {
-    navigate(path);
+  const handleAboutClick = () => {
+    nav.goToAbout();
+    setIsMenuOpen(false);
+  };
+
+  const handleBlogClick = () => {
+    nav.goToBlog();
+    setIsMenuOpen(false);
+  };
+
+  const handleSectionClick = (sectionId: string) => {
+    nav.goToSection(sectionId);
     setIsMenuOpen(false);
   };
 
@@ -66,25 +68,25 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
-              onClick={() => handleNavClick('/about')}
+              onClick={handleAboutClick}
               className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
             >
               About
             </button>
             <button 
-              onClick={() => handleNavClick('/blog')}
+              onClick={handleBlogClick}
               className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
             >
               Blog
             </button>
             <button 
-              onClick={() => scrollToSection('journey')}
+              onClick={() => handleSectionClick('journey')}
               className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
             >
               Journey
             </button>
             <button 
-              onClick={() => scrollToSection('building')}
+              onClick={() => handleSectionClick('building')}
               className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
             >
               Work
@@ -95,7 +97,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
             <ThemeToggle />
             <Button 
-              onClick={() => scrollToSection('connect')}
+              onClick={() => handleSectionClick('connect')}
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 lg:px-6"
               size="sm"
             >
@@ -123,32 +125,32 @@ const Navigation = () => {
           <div id="mobile-menu" role="menu" className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-background/98 to-background/95 backdrop-blur-md border-b border-border/50 shadow-lg">
             <div className="container mx-auto px-4 py-4 space-y-1">
               <button 
-                onClick={() => handleNavClick('/about')}
+                onClick={handleAboutClick}
                 className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
               >
                 About
               </button>
               <button 
-                onClick={() => handleNavClick('/blog')}
+                onClick={handleBlogClick}
                 className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
               >
                 Blog
               </button>
               <button 
-                onClick={() => scrollToSection('journey')}
+                onClick={() => handleSectionClick('journey')}
                 className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
               >
                 Journey
               </button>
               <button 
-                onClick={() => scrollToSection('building')}
+                onClick={() => handleSectionClick('building')}
                 className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
               >
                 Work
               </button>
               <div className="pt-2">
                 <Button 
-                  onClick={() => scrollToSection('connect')}
+                  onClick={() => handleSectionClick('connect')}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground min-h-[44px]"
                 >
                   Let's Connect

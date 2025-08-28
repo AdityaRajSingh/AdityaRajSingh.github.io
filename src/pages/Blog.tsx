@@ -38,11 +38,10 @@ const Blog = () => {
             
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-                All Notes
+                Blogs
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Thoughts, insights, and learnings from my journey in tech and beyond. 
-                A collection of ideas worth sharing.
+                Thoughts, insights, and learnings from my journey in tech, startups, and beyond.
               </p>
             </div>
           </div>

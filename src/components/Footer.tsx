@@ -1,12 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Heart } from "lucide-react";
 import { siteContent } from "@/content/siteContent";
+import { createNavigationHandler } from '@/lib/navigation';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const nav = createNavigationHandler(navigate);
   const currentYear = new Date().getFullYear();
 
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (href: string, label: string) => {
+    if (href.startsWith('#')) {
+      nav.goToSection(href.slice(1));
+    } else if (href === '/about') {
+      nav.goToAbout();
+    } else if (href === '/blog') {
+      nav.goToBlog();
+    } else if (href === '/') {
+      nav.goToHome();
+    }
   };
 
   return (
@@ -29,26 +41,15 @@ const Footer = () => {
               <h4 className="font-semibold text-foreground mb-3 sm:mb-4">Navigate</h4>
               <div className="space-y-1 sm:space-y-2">
                 {siteContent.footer.navigation.map((item) => {
-                  if (item.href.startsWith("#")) {
+                  if (item.href.startsWith("#") || item.href.startsWith("/")) {
                     return (
                       <button
                         key={item.label}
-                        onClick={() => scrollToSection(item.href.slice(1))}
+                        onClick={() => handleNavigation(item.href, item.label)}
                         className="block text-muted-foreground hover:text-foreground transition-colors text-left py-1 text-sm sm:text-base min-h-[44px] sm:min-h-0 flex items-center sm:block"
                       >
                         {item.label}
                       </button>
-                    );
-                  }
-                  if (item.href.startsWith("/")) {
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="block text-muted-foreground hover:text-foreground transition-colors py-1 text-sm sm:text-base min-h-[44px] sm:min-h-0 flex items-center sm:block"
-                      >
-                        {item.label}
-                      </a>
                     );
                   }
                   // External links (if any)
