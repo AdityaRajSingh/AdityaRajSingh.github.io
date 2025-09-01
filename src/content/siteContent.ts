@@ -154,7 +154,7 @@ export const siteContent = {
       {
         label: "Email",
         desc: "Let's collaborate",
-        href: "mailto:adi4adityaraj@gmail.com"
+        href: "mailto:hi.adityarajsingh@gmail.com"
       }
     ]
   },
@@ -192,7 +192,7 @@ export const siteContent = {
       { label: "GitHub", href: "https://github.com/AdityaRajSingh" },
       { label: "Topmate", href: "https://topmate.io/aditya_raj_singh" },
       { label: "Twitter", href: "https://x.com/hi_adityasingh" },
-      { label: "Email", href: "mailto:adi4adityaraj@gmail.com" }
+      { label: "Email", href: "mailto:hi.adityarajsingh@gmail.com" }
     ],
     navigation: [
       { label: "About", href: "/about", external: false },
