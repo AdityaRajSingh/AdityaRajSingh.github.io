@@ -191,7 +191,7 @@ export const siteContent = {
       { label: "LinkedIn", href: "https://www.linkedin.com/in/adityaraj-singh/" },
       { label: "GitHub", href: "https://github.com/AdityaRajSingh" },
       { label: "Topmate", href: "https://topmate.io/aditya_raj_singh" },
-      { label: "Twitter", href: "https://x.com/adityarajsingh_" },
+      { label: "Twitter", href: "https://x.com/hi_adityasingh" },
       { label: "Email", href: "mailto:adi4adityaraj@gmail.com" }
     ],
     navigation: [
