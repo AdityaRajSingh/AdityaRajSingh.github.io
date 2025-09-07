@@ -4,7 +4,7 @@ slug: "art-of-problem-solving-tech"
 date: "2024-10-22"
 excerpt: "3 AM. Production is down. Users are angry. Here's the systematic approach that saved my career (and my sanity)."
 heroImage: "art-of-problem-solving-tech.jpg"
-tags: ["Problem Solving", "Engineering", "Career", "Skills"]
+tags: ["Problem Solving", "Skills", "Career", "Engineering"]
 ---
 
 # The Art of Problem-Solving in Tech
