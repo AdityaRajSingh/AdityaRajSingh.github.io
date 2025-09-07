@@ -33,15 +33,15 @@ const RecommendationsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
           {quotes.map((q) => (
-            <Card key={`${q.author}-${q.role}`} className="hover-lift bg-card border-border">
-              <CardContent className="p-5 md:p-6">
+            <Card key={`${q.author}-${q.role}`} className="hover-lift bg-card border-border h-full">
+              <CardContent className="p-5 md:p-6 h-full flex flex-col">
                 <div className="w-12 h-12 rounded-full bg-gradient-teal flex items-center justify-center mb-4">
                   <Quote className="w-6 h-6 icon-contrast" />
                 </div>
-                <blockquote className="text-muted-foreground mb-6 leading-relaxed">
+                <blockquote className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                   "{q.quote}"
                 </blockquote>
-                <div className="border-t border-border pt-4">
+                <div className="border-t border-border pt-4 mt-auto">
                   <div className="font-semibold text-foreground">{q.author}</div>
                   <div className="text-sm text-muted-foreground">
                     {q.role}
