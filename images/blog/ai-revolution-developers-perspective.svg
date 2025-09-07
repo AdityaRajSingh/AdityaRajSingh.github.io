@@ -21,7 +21,7 @@
     <path d="M30,60 Q60,30 90,60 Q60,90 30,60" fill="#ffffff" opacity="0.6"/>
   </g>
   
-  <g transform="translate(650, 80)" fill="#ffffff" opacity="0.7">
+  <g transform="translate(600, 80)" fill="#ffffff" opacity="0.7">
     <text x="0" y="0" font-family="monospace" font-size="60" font-weight="bold">&lt;/&gt;</text>
   </g>
   
