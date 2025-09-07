@@ -23,7 +23,7 @@ export const siteContent = {
     subtitleSuffix: '.',
 
     body:
-      "Currently at Google, I build human-centered systems at scale and solve problems that matter. With four years across startups and big tech, I move fast, blending clean code, product thinking, and an entrepreneurial mindset. A lifelong learner, I’m now exploring how AI can tackle complex challenges and create meaningful solutions for users.",
+      "Currently at Google, I build human-centered systems at scale and solve problems that matter. With four years across startups and big tech, I move fast, blending clean code, product thinking, and an entrepreneurial mindset. A lifelong learner, I'm now exploring how AI can tackle complex challenges and create meaningful solutions for users.",
 
     cta: { label: 'My Journey', href: '#journey' },
   },
@@ -38,7 +38,7 @@ export const siteContent = {
         role: "Software Developer",
         period: "2024 – Present",
         body:
-          "Working on large‑scale systems that touch millions, while exploring AI’s potential and honing a builder’s mindset for the next entrepreneurial leap."
+          "Working on large‑scale systems that touch millions, while exploring AI's potential and honing a builder's mindset for the next entrepreneurial leap."
       },
       {
         title: "Startup Journey",
@@ -58,7 +58,7 @@ export const siteContent = {
   },
 
   building: {
-    heading: "What I’m Building",
+    heading: "What I'm Building",
     subheading:
       "Where passion meets execution: current projects, experiments, and startup ideas.",
     items: [
@@ -92,7 +92,7 @@ export const siteContent = {
         title: "AI-Powered Astrology",
         status: "Planning",
         body:
-          "A unique blend of ancient wisdom and modern AI, creating personalized astrological insights that resonate with today’s seekers.",
+          "A unique blend of ancient wisdom and modern AI, creating personalized astrological insights that resonate with today's seekers.",
         tech: ["AI", "Astrology", "Personal Development"],
         icon: "lightbulb",
         color: "gradient-purple",
@@ -102,7 +102,7 @@ export const siteContent = {
         }
       },
     ],
-    cta: { label: "Let’s Build Together", href: "#connect" }
+    cta: { label: "Let's Build Together", href: "#connect" }
   },
 
   recommendations: {
@@ -132,7 +132,7 @@ export const siteContent = {
   },
 
   connect: {
-    heading: "Let’s Connect",
+    heading: "Let's Connect",
     body:
       "Always open to meaningful conversations, whether it's about startups, the tech industry, finance, AI experiments, life stories, learning, or travel adventures.",
     links: [
@@ -166,10 +166,10 @@ export const siteContent = {
     intro2: "From my first encounter with coding as a kid to building systems at Google, I've been driven by curiosity and the magic of turning ideas into reality. I am currently exploring AI's potential to create transformative products and improve everyday life.",
     principlesHeading: "What Drives Me",
     principles: [
-      { title: "Curiosity & Learning", body: "Always exploring, questioning, and growing. From understanding how computers think to why people choose one product over another, I'm constantly learning." },
-      { title: "Tech & AI", body: "Fascinated by technology’s potential to shape the future." },
-      { title: "Problem Solving", body: "Driven to untangle challenges and turn ideas into impactful solutions. I blend technology with real-world problems to create something meaningful." },
-      { title: "Product Thinking", body: "Designing products with user needs at the forefront. Understanding what makes a product truly work for people drives my entrepreneurial approach." }
+      { title: "Curiosity & Learning", body: "Always exploring, questioning, and growing. Every challenge is a chance to understand something new and get better." },
+      { title: "User-First Building", body: "Real people use what I build. Understanding their needs, pain points, and goals drives every decision I make." },
+      { title: "Ship Fast, Learn Faster", body: "Build quickly, fail early, and iterate based on real feedback. Speed and learning matter more than perfection." },
+      { title: "First Principles Thinking", body: "Break down complex problems to their core. Question assumptions and build solutions from the ground up." }
     ],
 
     beyondHeading: "Beyond Code",
