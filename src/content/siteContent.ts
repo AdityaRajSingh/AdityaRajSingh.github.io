@@ -149,7 +149,7 @@ export const siteContent = {
       {
         label: "Twitter",
         desc: "Thoughts, tech, and experiments",
-        href: "https://x.com/adityarajsingh_"
+        href: "https://x.com/hi_adityasingh"
       },
       {
         label: "Email",
