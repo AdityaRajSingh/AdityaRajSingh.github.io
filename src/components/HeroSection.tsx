@@ -79,7 +79,7 @@ const HeroSection = () => {
           <Button
             onClick={scrollToJourney}
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium hover-lift animate-scale-in min-h-[48px] sm:min-h-[52px]"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground text-base sm:text-lg font-medium hover-lift animate-scale-in"
           >
             {siteContent.hero.cta.label}
           </Button>

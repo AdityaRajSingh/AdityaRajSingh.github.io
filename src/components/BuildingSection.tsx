@@ -126,10 +126,9 @@ const BuildingSection = () => {
 
         <div className="text-center mt-16">
           <Button
-            variant="outline"
             size="lg"
             onClick={() => nav.goToSection('connect')}
-            className="hover:bg-accent hover:text-accent-foreground"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             {cta.label}
           </Button>
