@@ -9,7 +9,7 @@ export const siteContent = {
     // keep styling classes inside the strings so the highlight matches current appearance
     subtitleVariants: [
       `A <span class="text-primary font-semibold">Software Developer</span>`,
-      `Entrepreneurial Mindset`,
+      `With <span class="text-primary font-semibold">Entrepreneurial Mindset</span>`,
       `Driven by <span class="text-primary font-semibold">AI & Curiosity</span>`
     ],
 
@@ -119,7 +119,7 @@ export const siteContent = {
         quote:
           "Aditya's three years of work with me showcased his remarkable curiosity and knack for grasping complex topics through insightful questioning. He's a smart worker, efficiently tackling challenges, a trait particularly valuable in a software developer.",
         author: "Kedar Chandrayan",
-        role: "Co-Founder & Sr Director Engineering, TrueSparrow"
+        role: "Co-Founder TrueSparrow"
       },
       {
         quote:

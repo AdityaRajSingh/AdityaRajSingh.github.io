@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import SparkleElement from './SparkleElement';
 import { siteContent } from '@/content/siteContent';
+import { createNavigationHandler } from '@/lib/navigation';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  const nav = createNavigationHandler(navigate);
+
   const scrollToJourney = () => {
-    document.getElementById('journey')?.scrollIntoView({ behavior: 'smooth' });
+    nav.goToSection('journey');
   };
 
   return (
@@ -56,7 +61,7 @@ const HeroSection = () => {
                   A <span className="text-primary font-semibold">Software Developer</span>
                 </div>
                 <div className="absolute left-0 right-0 text-center whitespace-normal transition-subtitle" style={{ ['--i' as any]: 1 }}>
-                  Entrepreneurial Mindset
+                  With <span className="text-primary font-semibold">Entrepreneurial Mindset</span>
                 </div>
                 <div className="absolute left-0 right-0 text-center whitespace-normal transition-subtitle" style={{ ['--i' as any]: 2 }}>
                   Driven by <span className="text-primary font-semibold">AI & Curiosity</span>

@@ -50,7 +50,7 @@ const ShareFooter = ({ title, url }: ShareFooterProps) => {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Share2 className="w-4 h-4" />
-          <span className="font-medium">Enjoy this note? Feel free to share!</span>
+          <span className="font-medium">Enjoyed this note? Feel free to share!</span>
         </div>
         
         <div className="flex items-center gap-3">
