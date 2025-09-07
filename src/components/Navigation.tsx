@@ -59,7 +59,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <button 
             onClick={handleLogoClick}
-            className="text-lg sm:text-xl font-semibold text-foreground hover:text-primary transition-colors min-h-[44px] min-w-[44px] flex items-center"
+            className="text-lg sm:text-xl font-semibold text-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] min-w-[44px] flex items-center hover:scale-105 active:scale-95"
             aria-label="Go to home"
           >
             Aditya Raj Singh
@@ -69,25 +69,25 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={handleAboutClick}
-              className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
             >
               About
             </button>
             <button 
               onClick={handleBlogClick}
-              className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
             >
               Blogs
             </button>
             <button 
               onClick={() => handleSectionClick('journey')}
-              className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
             >
               Journey
             </button>
             <button 
               onClick={() => handleSectionClick('building')}
-              className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
             >
               Work
             </button>
@@ -98,7 +98,7 @@ const Navigation = () => {
             <ThemeToggle />
             <Button 
               onClick={() => handleSectionClick('connect')}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 lg:px-6"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 lg:px-6 transition-all duration-300 ease-out hover:scale-105 active:scale-95 hover:shadow-lg"
               size="sm"
             >
               Let's Connect
@@ -126,32 +126,32 @@ const Navigation = () => {
             <div className="container mx-auto px-4 py-4 space-y-1">
               <button 
                 onClick={handleAboutClick}
-                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
+                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 ease-out rounded-md min-h-[44px] hover:translate-x-1 active:scale-95"
               >
                 About
               </button>
               <button 
                 onClick={handleBlogClick}
-                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
+                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 ease-out rounded-md min-h-[44px] hover:translate-x-1 active:scale-95"
               >
                 Blogs
               </button>
               <button 
                 onClick={() => handleSectionClick('journey')}
-                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
+                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 ease-out rounded-md min-h-[44px] hover:translate-x-1 active:scale-95"
               >
                 Journey
               </button>
               <button 
                 onClick={() => handleSectionClick('building')}
-                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
+                className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 ease-out rounded-md min-h-[44px] hover:translate-x-1 active:scale-95"
               >
                 Work
               </button>
               <div className="pt-2">
                 <Button 
                   onClick={() => handleSectionClick('connect')}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground min-h-[44px]"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground min-h-[44px] transition-all duration-300 ease-out hover:scale-105 active:scale-95 hover:shadow-lg"
                 >
                   Let's Connect
                 </Button>
