@@ -54,7 +54,7 @@ const About = () => {
                 <div className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium">
                   Learning
                 </div>
-                <div className="px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium">
+                <div className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium">
                   Building
                 </div>
                 <div className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium">
@@ -78,9 +78,8 @@ const About = () => {
           
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {about.principles.map((p, i) => (
+              {about.principles.map((p) => (
                 <div key={p.title}>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">{String(i+1).padStart(2, '0')}</h3>
                   <h4 className="text-2xl font-bold text-foreground mb-4">{p.title}</h4>
                   <p className="text-muted-foreground leading-relaxed">{p.body}</p>
                 </div>
@@ -90,22 +89,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Background Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-soft">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg max-w-none space-y-6">
-
-              <p className="text-muted-foreground leading-relaxed">{about.narrative1}</p>
-              <p className="text-muted-foreground leading-relaxed">{about.narrative2}</p>
-              <p className="text-muted-foreground leading-relaxed">{about.narrative3}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Interests Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-recommendations">
+      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-soft">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-foreground mb-12 text-center">

@@ -163,22 +163,21 @@ export const siteContent = {
     heading: "I'm Aditya.",
     subheading: "Software Engineer at Google, scaling ideas with an entrepreneurial drive",
     intro1: "Over the past four years I have worked in startups and big tech, in both remote and office settings. My experience spans frontend, backend and UX, always focused on solving meaningful problems and delivering impact.",
-    intro2: "I am currently exploring AI's potential to create transformative products and improve everyday life. With an entrepreneurial approach, I aim to turn ideas into practical, valuable solutions.",
+    intro2: "From my first encounter with coding as a kid to building systems at Google, I've been driven by curiosity and the magic of turning ideas into reality. I am currently exploring AI's potential to create transformative products and improve everyday life.",
     principlesHeading: "What Drives Me",
     principles: [
-      { title: "Curiosity & Learning", body: "Always exploring, questioning, and growing through new experiences." },
+      { title: "Curiosity & Learning", body: "Always exploring, questioning, and growing. From understanding how computers think to why people choose one product over another, I'm constantly learning." },
       { title: "Tech & AI", body: "Fascinated by technology’s potential to shape the future." },
-      { title: "Problem Solving", body: "Driven to untangle challenges and turn ideas into impactful solutions." },
-      { title: "Product Thinking", body: "Designing products with user needs at the forefront." }
+      { title: "Problem Solving", body: "Driven to untangle challenges and turn ideas into impactful solutions. I blend technology with real-world problems to create something meaningful." },
+      { title: "Product Thinking", body: "Designing products with user needs at the forefront. Understanding what makes a product truly work for people drives my entrepreneurial approach." }
     ],
-    narrative1: "My first encounter with Java as a kid felt like magic. Watching a few lines of code perform what would take hours for a human sparked a deep curiosity. That drive to understand how things work led me to study Computer Science and Engineering, where I explored how computers think, how systems operate, and how software can shape the world. Programming quickly became my playground.",
-    narrative2: "While building my skills as an engineer, I became fascinated by why people choose one product over another. I wanted to understand users, their needs, and what makes a product truly work for them. This curiosity pushed me toward product thinking and entrepreneurship, experimenting with side projects and blending technology with real-world problems to create something meaningful.",
-    narrative3: "Beyond tech, I explore the world through travel, photography, and meeting new people. Sports keep me grounded, from weekly basketball games to following cricket. I stay active, dive into finance and economics, and often reflect on philosophy. Every experience, whether on the court, in a new city, or over a coffee, adds to how I see the world and the problems I want to solve.",
+
     beyondHeading: "Beyond Code",
     beyondBullets: [
       "Capturing landscapes through photography",
-      "Exploring new cities",
-      "Diving into financial markets",
+      "Exploring new cities and meeting new people",
+      "Diving into financial markets and economics",
+      "Weekly basketball games and following cricket",
       "Geeking out on philosophy and life design"
     ],
     tags: ["Building", "Learning", "Traveling", "Photography"]
