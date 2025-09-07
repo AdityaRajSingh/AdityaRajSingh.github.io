@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/content/siteContent";
 import type { BuildingItem } from "@/content/siteContent";
 import { Code, Lightbulb, Github, ExternalLink } from "lucide-react";
 import SparkleElement from './SparkleElement';
+import { createNavigationHandler } from '@/lib/navigation';
 
 const ICONS: Record<NonNullable<BuildingItem["icon"]>, React.ComponentType<any>> = {
   code: Code,
@@ -19,6 +21,8 @@ const COLOR_CLASSES: Record<NonNullable<BuildingItem["color"]>, string> = {
 };
 
 const BuildingSection = () => {
+  const navigate = useNavigate();
+  const nav = createNavigationHandler(navigate);
   const { heading, subheading, items, cta } = siteContent.building;
 
   return (
@@ -124,10 +128,7 @@ const BuildingSection = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => {
-              const el = document.querySelector(cta.href);
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => nav.goToSection('connect')}
             className="hover:bg-accent hover:text-accent-foreground"
           >
             {cta.label}

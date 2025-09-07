@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import BlogCard from '@/components/BlogCard';
-import { Button } from '@/components/ui/button';
 import { useBlogPosts } from '@/hooks/useBlog';
 const Blog = () => {
   const navigate = useNavigate();
@@ -27,15 +25,6 @@ const Blog = () => {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
           {/* Header */}
           <div className="mb-12">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate('/')}
-              className="mb-6 hover:bg-accent/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
-            
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
                 Blogs

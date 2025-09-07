@@ -77,7 +77,7 @@ const Navigation = () => {
               onClick={handleBlogClick}
               className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2"
             >
-              Blog
+              Blogs
             </button>
             <button 
               onClick={() => handleSectionClick('journey')}
@@ -134,7 +134,7 @@ const Navigation = () => {
                 onClick={handleBlogClick}
                 className="block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]"
               >
-                Blog
+                Blogs
               </button>
               <button 
                 onClick={() => handleSectionClick('journey')}

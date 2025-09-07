@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, User } from 'lucide-react';
+import { Calendar, User } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ShareFooter from '@/components/ShareFooter';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { formatDate, getBlogIcon } from '@/lib/blog';
 import { getBlogHeroImage } from '@/lib/imageUtils';
@@ -20,10 +19,6 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Post not found</h1>
-          <Button onClick={() => navigate('/blog')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Button>
         </div>
       </div>
     );
@@ -61,16 +56,6 @@ const BlogPost = () => {
       
       <main className="pt-20 bg-gradient-journey">
         <article className="container mx-auto px-4 sm:px-6 md:px-8 py-10 md:py-12 max-w-4xl">
-          {/* Back Button */}
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/blog')}
-            className="mb-8 hover:bg-accent/50"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Blog
-          </Button>
-
           {/* Hero Image */}
           <div className="h-40 sm:h-56 md:h-64 rounded-lg overflow-hidden mb-8 shadow-lg relative">
             {getBlogHeroImage(post.heroImage) && (
