@@ -196,490 +196,545 @@ Error generating stack: `+g.message+`
  *
  * @license MIT
  */function _extends(){return _extends=Object.assign?Object.assign.bind():function(e){for(var o=1;o<arguments.length;o++){var s=arguments[o];for(var a in s)Object.prototype.hasOwnProperty.call(s,a)&&(e[a]=s[a])}return e},_extends.apply(this,arguments)}function _objectWithoutPropertiesLoose(e,o){if(e==null)return{};var s={},a=Object.keys(e),c,g;for(g=0;g<a.length;g++)c=a[g],!(o.indexOf(c)>=0)&&(s[c]=e[c]);return s}function isModifiedEvent(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}function shouldProcessLinkClick(e,o){return e.button===0&&(!o||o==="_self")&&!isModifiedEvent(e)}const _excluded=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","viewTransition"],REACT_ROUTER_VERSION="6";try{window.__reactRouterVersion=REACT_ROUTER_VERSION}catch{}const START_TRANSITION="startTransition",startTransitionImpl=React[START_TRANSITION];function BrowserRouter(e){let{basename:o,children:s,future:a,window:c}=e,g=reactExports.useRef();g.current==null&&(g.current=createBrowserHistory({window:c,v5Compat:!0}));let et=g.current,[tt,nt]=reactExports.useState({action:et.action,location:et.location}),{v7_startTransition:rt}=a||{},it=reactExports.useCallback(lt=>{rt&&startTransitionImpl?startTransitionImpl(()=>nt(lt)):nt(lt)},[nt,rt]);return reactExports.useLayoutEffect(()=>et.listen(it),[et,it]),reactExports.createElement(Router,{basename:o,children:s,location:tt.location,navigationType:tt.action,navigator:et,future:a})}const isBrowser=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",ABSOLUTE_URL_REGEX=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,Link=reactExports.forwardRef(function(o,s){let{onClick:a,relative:c,reloadDocument:g,replace:et,state:tt,target:nt,to:rt,preventScrollReset:it,viewTransition:lt}=o,st=_objectWithoutPropertiesLoose(o,_excluded),{basename:dt}=reactExports.useContext(NavigationContext),xt,gt=!1;if(typeof rt=="string"&&ABSOLUTE_URL_REGEX.test(rt)&&(xt=rt,isBrowser))try{let yt=new URL(window.location.href),wt=rt.startsWith("//")?new URL(yt.protocol+rt):new URL(rt),kt=stripBasename(wt.pathname,dt);wt.origin===yt.origin&&kt!=null?rt=kt+wt.search+wt.hash:gt=!0}catch{}let vt=useHref(rt,{relative:c}),mt=useLinkClickHandler(rt,{replace:et,state:tt,target:nt,preventScrollReset:it,relative:c,viewTransition:lt});function ht(yt){a&&a(yt),yt.defaultPrevented||mt(yt)}return reactExports.createElement("a",_extends({},st,{href:xt||vt,onClick:gt||g?a:ht,ref:s,target:nt}))});var DataRouterHook;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmit="useSubmit",e.UseSubmitFetcher="useSubmitFetcher",e.UseFetcher="useFetcher",e.useViewTransitionState="useViewTransitionState"})(DataRouterHook||(DataRouterHook={}));var DataRouterStateHook;(function(e){e.UseFetcher="useFetcher",e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(DataRouterStateHook||(DataRouterStateHook={}));function useLinkClickHandler(e,o){let{target:s,replace:a,state:c,preventScrollReset:g,relative:et,viewTransition:tt}=o===void 0?{}:o,nt=useNavigate(),rt=useLocation(),it=useResolvedPath(e,{relative:et});return reactExports.useCallback(lt=>{if(shouldProcessLinkClick(lt,s)){lt.preventDefault();let st=a!==void 0?a:createPath(rt)===createPath(it);nt(e,{replace:st,state:c,preventScrollReset:g,relative:et,viewTransition:tt})}},[rt,nt,it,a,c,s,e,g,et,tt])}var hasElementType=typeof Element<"u",hasMap=typeof Map=="function",hasSet=typeof Set=="function",hasArrayBuffer=typeof ArrayBuffer=="function"&&!!ArrayBuffer.isView;function equal(e,o){if(e===o)return!0;if(e&&o&&typeof e=="object"&&typeof o=="object"){if(e.constructor!==o.constructor)return!1;var s,a,c;if(Array.isArray(e)){if(s=e.length,s!=o.length)return!1;for(a=s;a--!==0;)if(!equal(e[a],o[a]))return!1;return!0}var g;if(hasMap&&e instanceof Map&&o instanceof Map){if(e.size!==o.size)return!1;for(g=e.entries();!(a=g.next()).done;)if(!o.has(a.value[0]))return!1;for(g=e.entries();!(a=g.next()).done;)if(!equal(a.value[1],o.get(a.value[0])))return!1;return!0}if(hasSet&&e instanceof Set&&o instanceof Set){if(e.size!==o.size)return!1;for(g=e.entries();!(a=g.next()).done;)if(!o.has(a.value[0]))return!1;return!0}if(hasArrayBuffer&&ArrayBuffer.isView(e)&&ArrayBuffer.isView(o)){if(s=e.length,s!=o.length)return!1;for(a=s;a--!==0;)if(e[a]!==o[a])return!1;return!0}if(e.constructor===RegExp)return e.source===o.source&&e.flags===o.flags;if(e.valueOf!==Object.prototype.valueOf&&typeof e.valueOf=="function"&&typeof o.valueOf=="function")return e.valueOf()===o.valueOf();if(e.toString!==Object.prototype.toString&&typeof e.toString=="function"&&typeof o.toString=="function")return e.toString()===o.toString();if(c=Object.keys(e),s=c.length,s!==Object.keys(o).length)return!1;for(a=s;a--!==0;)if(!Object.prototype.hasOwnProperty.call(o,c[a]))return!1;if(hasElementType&&e instanceof Element)return!1;for(a=s;a--!==0;)if(!((c[a]==="_owner"||c[a]==="__v"||c[a]==="__o")&&e.$$typeof)&&!equal(e[c[a]],o[c[a]]))return!1;return!0}return e!==e&&o!==o}var reactFastCompare=function(o,s){try{return equal(o,s)}catch(a){if((a.message||"").match(/stack|recursion/i))return console.warn("react-fast-compare cannot handle circular refs"),!1;throw a}};const fastCompare=getDefaultExportFromCjs(reactFastCompare);var invariant=function(e,o,s,a,c,g,et,tt){if(!e){var nt;if(o===void 0)nt=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var rt=[s,a,c,g,et,tt],it=0;nt=new Error(o.replace(/%s/g,function(){return rt[it++]})),nt.name="Invariant Violation"}throw nt.framesToPop=1,nt}},browser=invariant;const invariant$1=getDefaultExportFromCjs(browser);var shallowequal=function(o,s,a,c){var g=a?a.call(c,o,s):void 0;if(g!==void 0)return!!g;if(o===s)return!0;if(typeof o!="object"||!o||typeof s!="object"||!s)return!1;var et=Object.keys(o),tt=Object.keys(s);if(et.length!==tt.length)return!1;for(var nt=Object.prototype.hasOwnProperty.bind(s),rt=0;rt<et.length;rt++){var it=et[rt];if(!nt(it))return!1;var lt=o[it],st=s[it];if(g=a?a.call(c,lt,st,it):void 0,g===!1||g===void 0&&lt!==st)return!1}return!0};const shallowEqual=getDefaultExportFromCjs(shallowequal);var TAG_NAMES=(e=>(e.BASE="base",e.BODY="body",e.HEAD="head",e.HTML="html",e.LINK="link",e.META="meta",e.NOSCRIPT="noscript",e.SCRIPT="script",e.STYLE="style",e.TITLE="title",e.FRAGMENT="Symbol(react.fragment)",e))(TAG_NAMES||{}),SEO_PRIORITY_TAGS={link:{rel:["amphtml","canonical","alternate"]},script:{type:["application/ld+json"]},meta:{charset:"",name:["generator","robots","description"],property:["og:type","og:title","og:url","og:image","og:image:alt","og:description","twitter:url","twitter:title","twitter:description","twitter:image","twitter:image:alt","twitter:card","twitter:site"]}},VALID_TAG_NAMES=Object.values(TAG_NAMES),REACT_TAG_MAP={accesskey:"accessKey",charset:"charSet",class:"className",contenteditable:"contentEditable",contextmenu:"contextMenu","http-equiv":"httpEquiv",itemprop:"itemProp",tabindex:"tabIndex"},HTML_TAG_MAP=Object.entries(REACT_TAG_MAP).reduce((e,[o,s])=>(e[s]=o,e),{}),HELMET_ATTRIBUTE="data-rh",HELMET_PROPS={DEFAULT_TITLE:"defaultTitle",DEFER:"defer",ENCODE_SPECIAL_CHARACTERS:"encodeSpecialCharacters",ON_CHANGE_CLIENT_STATE:"onChangeClientState",TITLE_TEMPLATE:"titleTemplate",PRIORITIZE_SEO_TAGS:"prioritizeSeoTags"},getInnermostProperty=(e,o)=>{for(let s=e.length-1;s>=0;s-=1){const a=e[s];if(Object.prototype.hasOwnProperty.call(a,o))return a[o]}return null},getTitleFromPropsList=e=>{let o=getInnermostProperty(e,"title");const s=getInnermostProperty(e,HELMET_PROPS.TITLE_TEMPLATE);if(Array.isArray(o)&&(o=o.join("")),s&&o)return s.replace(/%s/g,()=>o);const a=getInnermostProperty(e,HELMET_PROPS.DEFAULT_TITLE);return o||a||void 0},getOnChangeClientState=e=>getInnermostProperty(e,HELMET_PROPS.ON_CHANGE_CLIENT_STATE)||(()=>{}),getAttributesFromPropsList=(e,o)=>o.filter(s=>typeof s[e]<"u").map(s=>s[e]).reduce((s,a)=>({...s,...a}),{}),getBaseTagFromPropsList=(e,o)=>o.filter(s=>typeof s.base<"u").map(s=>s.base).reverse().reduce((s,a)=>{if(!s.length){const c=Object.keys(a);for(let g=0;g<c.length;g+=1){const tt=c[g].toLowerCase();if(e.indexOf(tt)!==-1&&a[tt])return s.concat(a)}}return s},[]),warn=e=>console&&typeof console.warn=="function"&&console.warn(e),getTagsFromPropsList=(e,o,s)=>{const a={};return s.filter(c=>Array.isArray(c[e])?!0:(typeof c[e]<"u"&&warn(`Helmet: ${e} should be of type "Array". Instead found type "${typeof c[e]}"`),!1)).map(c=>c[e]).reverse().reduce((c,g)=>{const et={};g.filter(nt=>{let rt;const it=Object.keys(nt);for(let st=0;st<it.length;st+=1){const dt=it[st],xt=dt.toLowerCase();o.indexOf(xt)!==-1&&!(rt==="rel"&&nt[rt].toLowerCase()==="canonical")&&!(xt==="rel"&&nt[xt].toLowerCase()==="stylesheet")&&(rt=xt),o.indexOf(dt)!==-1&&(dt==="innerHTML"||dt==="cssText"||dt==="itemprop")&&(rt=dt)}if(!rt||!nt[rt])return!1;const lt=nt[rt].toLowerCase();return a[rt]||(a[rt]={}),et[rt]||(et[rt]={}),a[rt][lt]?!1:(et[rt][lt]=!0,!0)}).reverse().forEach(nt=>c.push(nt));const tt=Object.keys(et);for(let nt=0;nt<tt.length;nt+=1){const rt=tt[nt],it={...a[rt],...et[rt]};a[rt]=it}return c},[]).reverse()},getAnyTrueFromPropsList=(e,o)=>{if(Array.isArray(e)&&e.length){for(let s=0;s<e.length;s+=1)if(e[s][o])return!0}return!1},reducePropsToState=e=>({baseTag:getBaseTagFromPropsList(["href"],e),bodyAttributes:getAttributesFromPropsList("bodyAttributes",e),defer:getInnermostProperty(e,HELMET_PROPS.DEFER),encode:getInnermostProperty(e,HELMET_PROPS.ENCODE_SPECIAL_CHARACTERS),htmlAttributes:getAttributesFromPropsList("htmlAttributes",e),linkTags:getTagsFromPropsList("link",["rel","href"],e),metaTags:getTagsFromPropsList("meta",["name","charset","http-equiv","property","itemprop"],e),noscriptTags:getTagsFromPropsList("noscript",["innerHTML"],e),onChangeClientState:getOnChangeClientState(e),scriptTags:getTagsFromPropsList("script",["src","innerHTML"],e),styleTags:getTagsFromPropsList("style",["cssText"],e),title:getTitleFromPropsList(e),titleAttributes:getAttributesFromPropsList("titleAttributes",e),prioritizeSeoTags:getAnyTrueFromPropsList(e,HELMET_PROPS.PRIORITIZE_SEO_TAGS)}),flattenArray=e=>Array.isArray(e)?e.join(""):e,checkIfPropsMatch=(e,o)=>{const s=Object.keys(e);for(let a=0;a<s.length;a+=1)if(o[s[a]]&&o[s[a]].includes(e[s[a]]))return!0;return!1},prioritizer=(e,o)=>Array.isArray(e)?e.reduce((s,a)=>(checkIfPropsMatch(a,o)?s.priority.push(a):s.default.push(a),s),{priority:[],default:[]}):{default:e,priority:[]},without=(e,o)=>({...e,[o]:void 0}),SELF_CLOSING_TAGS=["noscript","script","style"],encodeSpecialCharacters=(e,o=!0)=>o===!1?String(e):String(e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#x27;"),generateElementAttributesAsString=e=>Object.keys(e).reduce((o,s)=>{const a=typeof e[s]<"u"?`${s}="${e[s]}"`:`${s}`;return o?`${o} ${a}`:a},""),generateTitleAsString=(e,o,s,a)=>{const c=generateElementAttributesAsString(s),g=flattenArray(o);return c?`<${e} ${HELMET_ATTRIBUTE}="true" ${c}>${encodeSpecialCharacters(g,a)}</${e}>`:`<${e} ${HELMET_ATTRIBUTE}="true">${encodeSpecialCharacters(g,a)}</${e}>`},generateTagsAsString=(e,o,s=!0)=>o.reduce((a,c)=>{const g=c,et=Object.keys(g).filter(rt=>!(rt==="innerHTML"||rt==="cssText")).reduce((rt,it)=>{const lt=typeof g[it]>"u"?it:`${it}="${encodeSpecialCharacters(g[it],s)}"`;return rt?`${rt} ${lt}`:lt},""),tt=g.innerHTML||g.cssText||"",nt=SELF_CLOSING_TAGS.indexOf(e)===-1;return`${a}<${e} ${HELMET_ATTRIBUTE}="true" ${et}${nt?"/>":`>${tt}</${e}>`}`},""),convertElementAttributesToReactProps=(e,o={})=>Object.keys(e).reduce((s,a)=>{const c=REACT_TAG_MAP[a];return s[c||a]=e[a],s},o),generateTitleAsReactComponent=(e,o,s)=>{const a={key:o,[HELMET_ATTRIBUTE]:!0},c=convertElementAttributesToReactProps(s,a);return[React3.createElement("title",c,o)]},generateTagsAsReactComponent=(e,o)=>o.map((s,a)=>{const c={key:a,[HELMET_ATTRIBUTE]:!0};return Object.keys(s).forEach(g=>{const tt=REACT_TAG_MAP[g]||g;if(tt==="innerHTML"||tt==="cssText"){const nt=s.innerHTML||s.cssText;c.dangerouslySetInnerHTML={__html:nt}}else c[tt]=s[g]}),React3.createElement(e,c)}),getMethodsForTag=(e,o,s=!0)=>{switch(e){case"title":return{toComponent:()=>generateTitleAsReactComponent(e,o.title,o.titleAttributes),toString:()=>generateTitleAsString(e,o.title,o.titleAttributes,s)};case"bodyAttributes":case"htmlAttributes":return{toComponent:()=>convertElementAttributesToReactProps(o),toString:()=>generateElementAttributesAsString(o)};default:return{toComponent:()=>generateTagsAsReactComponent(e,o),toString:()=>generateTagsAsString(e,o,s)}}},getPriorityMethods=({metaTags:e,linkTags:o,scriptTags:s,encode:a})=>{const c=prioritizer(e,SEO_PRIORITY_TAGS.meta),g=prioritizer(o,SEO_PRIORITY_TAGS.link),et=prioritizer(s,SEO_PRIORITY_TAGS.script);return{priorityMethods:{toComponent:()=>[...generateTagsAsReactComponent("meta",c.priority),...generateTagsAsReactComponent("link",g.priority),...generateTagsAsReactComponent("script",et.priority)],toString:()=>`${getMethodsForTag("meta",c.priority,a)} ${getMethodsForTag("link",g.priority,a)} ${getMethodsForTag("script",et.priority,a)}`},metaTags:c.default,linkTags:g.default,scriptTags:et.default}},mapStateOnServer=e=>{const{baseTag:o,bodyAttributes:s,encode:a=!0,htmlAttributes:c,noscriptTags:g,styleTags:et,title:tt="",titleAttributes:nt,prioritizeSeoTags:rt}=e;let{linkTags:it,metaTags:lt,scriptTags:st}=e,dt={toComponent:()=>{},toString:()=>""};return rt&&({priorityMethods:dt,linkTags:it,metaTags:lt,scriptTags:st}=getPriorityMethods(e)),{priority:dt,base:getMethodsForTag("base",o,a),bodyAttributes:getMethodsForTag("bodyAttributes",s,a),htmlAttributes:getMethodsForTag("htmlAttributes",c,a),link:getMethodsForTag("link",it,a),meta:getMethodsForTag("meta",lt,a),noscript:getMethodsForTag("noscript",g,a),script:getMethodsForTag("script",st,a),style:getMethodsForTag("style",et,a),title:getMethodsForTag("title",{title:tt,titleAttributes:nt},a)}},server_default=mapStateOnServer,instances=[],isDocument=!!(typeof window<"u"&&window.document&&window.document.createElement),HelmetData=class{constructor(e,o){fn(this,"instances",[]);fn(this,"canUseDOM",isDocument);fn(this,"context");fn(this,"value",{setHelmet:e=>{this.context.helmet=e},helmetInstances:{get:()=>this.canUseDOM?instances:this.instances,add:e=>{(this.canUseDOM?instances:this.instances).push(e)},remove:e=>{const o=(this.canUseDOM?instances:this.instances).indexOf(e);(this.canUseDOM?instances:this.instances).splice(o,1)}}});this.context=e,this.canUseDOM=o||!1,o||(e.helmet=server_default({baseTag:[],bodyAttributes:{},encodeSpecialCharacters:!0,htmlAttributes:{},linkTags:[],metaTags:[],noscriptTags:[],scriptTags:[],styleTags:[],title:"",titleAttributes:{}}))}},defaultValue={},Context=React3.createContext(defaultValue),sr,HelmetProvider=(sr=class extends reactExports.Component{constructor(s){super(s);fn(this,"helmetData");this.helmetData=new HelmetData(this.props.context||{},sr.canUseDOM)}render(){return React3.createElement(Context.Provider,{value:this.helmetData.value},this.props.children)}},fn(sr,"canUseDOM",isDocument),sr),updateTags=(e,o)=>{const s=document.head||document.querySelector("head"),a=s.querySelectorAll(`${e}[${HELMET_ATTRIBUTE}]`),c=[].slice.call(a),g=[];let et;return o&&o.length&&o.forEach(tt=>{const nt=document.createElement(e);for(const rt in tt)if(Object.prototype.hasOwnProperty.call(tt,rt))if(rt==="innerHTML")nt.innerHTML=tt.innerHTML;else if(rt==="cssText")nt.styleSheet?nt.styleSheet.cssText=tt.cssText:nt.appendChild(document.createTextNode(tt.cssText));else{const it=rt,lt=typeof tt[it]>"u"?"":tt[it];nt.setAttribute(rt,lt)}nt.setAttribute(HELMET_ATTRIBUTE,"true"),c.some((rt,it)=>(et=it,nt.isEqualNode(rt)))?c.splice(et,1):g.push(nt)}),c.forEach(tt=>{var nt;return(nt=tt.parentNode)==null?void 0:nt.removeChild(tt)}),g.forEach(tt=>s.appendChild(tt)),{oldTags:c,newTags:g}},updateAttributes=(e,o)=>{const s=document.getElementsByTagName(e)[0];if(!s)return;const a=s.getAttribute(HELMET_ATTRIBUTE),c=a?a.split(","):[],g=[...c],et=Object.keys(o);for(const tt of et){const nt=o[tt]||"";s.getAttribute(tt)!==nt&&s.setAttribute(tt,nt),c.indexOf(tt)===-1&&c.push(tt);const rt=g.indexOf(tt);rt!==-1&&g.splice(rt,1)}for(let tt=g.length-1;tt>=0;tt-=1)s.removeAttribute(g[tt]);c.length===g.length?s.removeAttribute(HELMET_ATTRIBUTE):s.getAttribute(HELMET_ATTRIBUTE)!==et.join(",")&&s.setAttribute(HELMET_ATTRIBUTE,et.join(","))},updateTitle=(e,o)=>{typeof e<"u"&&document.title!==e&&(document.title=flattenArray(e)),updateAttributes("title",o)},commitTagChanges=(e,o)=>{const{baseTag:s,bodyAttributes:a,htmlAttributes:c,linkTags:g,metaTags:et,noscriptTags:tt,onChangeClientState:nt,scriptTags:rt,styleTags:it,title:lt,titleAttributes:st}=e;updateAttributes("body",a),updateAttributes("html",c),updateTitle(lt,st);const dt={baseTag:updateTags("base",s),linkTags:updateTags("link",g),metaTags:updateTags("meta",et),noscriptTags:updateTags("noscript",tt),scriptTags:updateTags("script",rt),styleTags:updateTags("style",it)},xt={},gt={};Object.keys(dt).forEach(vt=>{const{newTags:mt,oldTags:ht}=dt[vt];mt.length&&(xt[vt]=mt),ht.length&&(gt[vt]=dt[vt].oldTags)}),o&&o(),nt(e,xt,gt)},_helmetCallback=null,handleStateChangeOnClient=e=>{_helmetCallback&&cancelAnimationFrame(_helmetCallback),e.defer?_helmetCallback=requestAnimationFrame(()=>{commitTagChanges(e,()=>{_helmetCallback=null})}):(commitTagChanges(e),_helmetCallback=null)},client_default=handleStateChangeOnClient,HelmetDispatcher=class extends reactExports.Component{constructor(){super(...arguments);fn(this,"rendered",!1)}shouldComponentUpdate(o){return!shallowEqual(o,this.props)}componentDidUpdate(){this.emitChange()}componentWillUnmount(){const{helmetInstances:o}=this.props.context;o.remove(this),this.emitChange()}emitChange(){const{helmetInstances:o,setHelmet:s}=this.props.context;let a=null;const c=reducePropsToState(o.get().map(g=>{const et={...g.props};return delete et.context,et}));HelmetProvider.canUseDOM?client_default(c):server_default&&(a=server_default(c)),s(a)}init(){if(this.rendered)return;this.rendered=!0;const{helmetInstances:o}=this.props.context;o.add(this),this.emitChange()}render(){return this.init(),null}},Tr,Helmet=(Tr=class extends reactExports.Component{shouldComponentUpdate(e){return!fastCompare(without(this.props,"helmetData"),without(e,"helmetData"))}mapNestedChildrenToProps(e,o){if(!o)return null;switch(e.type){case"script":case"noscript":return{innerHTML:o};case"style":return{cssText:o};default:throw new Error(`<${e.type} /> elements are self-closing and can not contain children. Refer to our API for more information.`)}}flattenArrayTypeChildren(e,o,s,a){return{...o,[e.type]:[...o[e.type]||[],{...s,...this.mapNestedChildrenToProps(e,a)}]}}mapObjectTypeChildren(e,o,s,a){switch(e.type){case"title":return{...o,[e.type]:a,titleAttributes:{...s}};case"body":return{...o,bodyAttributes:{...s}};case"html":return{...o,htmlAttributes:{...s}};default:return{...o,[e.type]:{...s}}}}mapArrayTypeChildrenToProps(e,o){let s={...o};return Object.keys(e).forEach(a=>{s={...s,[a]:e[a]}}),s}warnOnInvalidChildren(e,o){return invariant$1(VALID_TAG_NAMES.some(s=>e.type===s),typeof e.type=="function"?"You may be attempting to nest <Helmet> components within each other, which is not allowed. Refer to our API for more information.":`Only elements types ${VALID_TAG_NAMES.join(", ")} are allowed. Helmet does not support rendering <${e.type}> elements. Refer to our API for more information.`),invariant$1(!o||typeof o=="string"||Array.isArray(o)&&!o.some(s=>typeof s!="string"),`Helmet expects a string as a child of <${e.type}>. Did you forget to wrap your children in braces? ( <${e.type}>{\`\`}</${e.type}> ) Refer to our API for more information.`),!0}mapChildrenToProps(e,o){let s={};return React3.Children.forEach(e,a=>{if(!a||!a.props)return;const{children:c,...g}=a.props,et=Object.keys(g).reduce((nt,rt)=>(nt[HTML_TAG_MAP[rt]||rt]=g[rt],nt),{});let{type:tt}=a;switch(typeof tt=="symbol"?tt=tt.toString():this.warnOnInvalidChildren(a,c),tt){case"Symbol(react.fragment)":o=this.mapChildrenToProps(c,o);break;case"link":case"meta":case"noscript":case"script":case"style":s=this.flattenArrayTypeChildren(a,s,et,c);break;default:o=this.mapObjectTypeChildren(a,o,et,c);break}}),this.mapArrayTypeChildrenToProps(s,o)}render(){const{children:e,...o}=this.props;let s={...o},{helmetData:a}=o;if(e&&(s=this.mapChildrenToProps(e,s)),a&&!(a instanceof HelmetData)){const c=a;a=new HelmetData(c.context,!0),delete s.helmetData}return a?React3.createElement(HelmetDispatcher,{...s,context:a.value}):React3.createElement(Context.Consumer,null,c=>React3.createElement(HelmetDispatcher,{...s,context:c}))}},fn(Tr,"defaultProps",{defer:!0,encodeSpecialCharacters:!0,prioritizeSeoTags:!1}),Tr);const buttonVariants=cva("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",{variants:{variant:{default:"bg-primary text-primary-foreground hover:bg-primary/90",destructive:"bg-destructive text-destructive-foreground hover:bg-destructive/90",outline:"border border-input bg-background hover:bg-accent hover:text-accent-foreground",secondary:"bg-secondary text-secondary-foreground hover:bg-secondary/80",ghost:"hover:bg-accent hover:text-accent-foreground",link:"text-primary underline-offset-4 hover:underline"},size:{default:"h-10 px-4 py-2",sm:"h-9 rounded-md px-3",lg:"h-11 rounded-md px-8",icon:"h-10 w-10"}},defaultVariants:{variant:"default",size:"default"}}),Button=reactExports.forwardRef(({className:e,variant:o,size:s,asChild:a=!1,...c},g)=>{const et=a?Slot:"button";return jsxRuntimeExports.jsx(et,{className:cn(buttonVariants({variant:o,size:s,className:e})),ref:g,...c})});Button.displayName="Button";const ThemeToggle=()=>{const{theme:e,setTheme:o,resolvedTheme:s}=j$1(),[a,c]=reactExports.useState(!1);reactExports.useEffect(()=>{if(c(!0),typeof window<"u")try{localStorage.getItem("theme")||o("system")}catch{o("system")}},[o]);const g=()=>{o(s==="dark"?"light":"dark")};return a?jsxRuntimeExports.jsxs(Button,{variant:"ghost",size:"sm",className:"h-8 w-8 px-0",onClick:g,children:[jsxRuntimeExports.jsx(Sun,{className:"h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"}),jsxRuntimeExports.jsx(Moon,{className:"absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"}),jsxRuntimeExports.jsx("span",{className:"sr-only",children:"Toggle theme"})]}):jsxRuntimeExports.jsxs(Button,{variant:"ghost",size:"sm",className:"h-8 w-8 px-0",children:[jsxRuntimeExports.jsx("div",{className:"h-[1.2rem] w-[1.2rem]"}),jsxRuntimeExports.jsx("span",{className:"sr-only",children:"Toggle theme"})]})},createNavigationHandler=e=>({goToHome:()=>{e("/"),setTimeout(()=>{window.scrollTo({top:0,behavior:"smooth"})},100)},goToAbout:()=>{e("/about"),setTimeout(()=>{window.scrollTo({top:0,behavior:"smooth"})},100)},goToBlog:()=>{e("/blog"),setTimeout(()=>{window.scrollTo({top:0,behavior:"smooth"})},100)},goToSection:o=>{const s=window.location.pathname,a=c=>{const g=document.querySelector("nav"),et=g?g.offsetHeight:80,tt=c.offsetTop-et;window.scrollTo({top:Math.max(0,tt),behavior:"smooth"})};if(s==="/"){const c=document.getElementById(o);c&&a(c)}else e("/"),setTimeout(()=>{const c=document.getElementById(o);c&&a(c)},100)}}),Navigation=()=>{const e=useNavigate();useLocation();const[o,s]=reactExports.useState(!1),[a,c]=reactExports.useState(!1),g=createNavigationHandler(e);reactExports.useEffect(()=>{const it=()=>{const lt=window.scrollY;c(lt>50)};return window.addEventListener("scroll",it),it(),()=>window.removeEventListener("scroll",it)},[]);const et=()=>{g.goToHome(),s(!1)},tt=()=>{g.goToAbout(),s(!1)},nt=()=>{g.goToBlog(),s(!1)},rt=it=>{g.goToSection(it),s(!1)};return jsxRuntimeExports.jsxs("nav",{className:"fixed top-0 left-0 right-0 z-50","aria-label":"Main navigation",children:[jsxRuntimeExports.jsx("div",{className:`absolute inset-0 transition-opacity duration-500 ease-out ${a?"opacity-100":"opacity-0"} bg-gradient-to-r from-background/95 via-background/90 to-background/95 backdrop-blur-md border-b border-border/50 shadow-sm`}),jsxRuntimeExports.jsxs("div",{className:"relative container mx-auto px-4 sm:px-6 py-3 sm:py-4",children:[jsxRuntimeExports.jsxs("div",{className:"flex items-center justify-between",children:[jsxRuntimeExports.jsx("button",{onClick:et,className:"text-lg sm:text-xl font-semibold text-foreground hover:text-primary transition-colors min-h-[44px] min-w-[44px] flex items-center","aria-label":"Go to home",children:"Aditya Raj Singh"}),jsxRuntimeExports.jsxs("div",{className:"hidden md:flex items-center space-x-6 lg:space-x-8",children:[jsxRuntimeExports.jsx("button",{onClick:tt,className:"text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2",children:"About"}),jsxRuntimeExports.jsx("button",{onClick:nt,className:"text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2",children:"Blog"}),jsxRuntimeExports.jsx("button",{onClick:()=>rt("journey"),className:"text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2",children:"Journey"}),jsxRuntimeExports.jsx("button",{onClick:()=>rt("building"),className:"text-muted-foreground hover:text-foreground transition-colors min-h-[44px] px-2",children:"Work"})]}),jsxRuntimeExports.jsxs("div",{className:"hidden md:flex items-center space-x-3 lg:space-x-4",children:[jsxRuntimeExports.jsx(ThemeToggle,{}),jsxRuntimeExports.jsx(Button,{onClick:()=>rt("connect"),className:"bg-primary hover:bg-primary/90 text-primary-foreground px-4 lg:px-6",size:"sm",children:"Let's Connect"})]}),jsxRuntimeExports.jsxs("div",{className:"flex md:hidden items-center space-x-2",children:[jsxRuntimeExports.jsx(ThemeToggle,{}),jsxRuntimeExports.jsx("button",{onClick:()=>s(!o),className:"p-2 text-foreground hover:text-primary transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center","aria-label":"Toggle menu","aria-expanded":o,"aria-controls":"mobile-menu",children:o?jsxRuntimeExports.jsx(X$1,{size:24}):jsxRuntimeExports.jsx(Menu,{size:24})})]})]}),o&&jsxRuntimeExports.jsx("div",{id:"mobile-menu",role:"menu",className:"md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-background/98 to-background/95 backdrop-blur-md border-b border-border/50 shadow-lg",children:jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 py-4 space-y-1",children:[jsxRuntimeExports.jsx("button",{onClick:tt,className:"block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]",children:"About"}),jsxRuntimeExports.jsx("button",{onClick:nt,className:"block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]",children:"Blog"}),jsxRuntimeExports.jsx("button",{onClick:()=>rt("journey"),className:"block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]",children:"Journey"}),jsxRuntimeExports.jsx("button",{onClick:()=>rt("building"),className:"block w-full text-left py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md min-h-[44px]",children:"Work"}),jsxRuntimeExports.jsx("div",{className:"pt-2",children:jsxRuntimeExports.jsx(Button,{onClick:()=>rt("connect"),className:"w-full bg-primary hover:bg-primary/90 text-primary-foreground min-h-[44px]",children:"Let's Connect"})})]})})]})]})},SparkleElement=({className:e="",delay:o=0})=>jsxRuntimeExports.jsx("div",{className:`absolute w-8 h-8 ${e}`,style:{animationDelay:`${o}s`},children:jsxRuntimeExports.jsx("svg",{viewBox:"0 0 24 24",fill:"none",className:"w-full h-full animate-sparkle",children:jsxRuntimeExports.jsx("path",{d:"M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z",fill:"currentColor",className:"text-accent/60"})})}),siteContent={hero:{title:"Hi, I'm Aditya.",subtitle:"A Software Developer.",kicker:"AI-first builder & lifelong learner",subtitleVariants:['A <span class="text-primary font-semibold">Software Developer</span>','With <span class="text-primary font-semibold">Entrepreneurial Mindset</span>','Driven by <span class="text-primary font-semibold">AI & Curiosity</span>'],titlePrefix:"Hi, I'm",name:"Aditya",titleSuffix:".",subtitlePrefix:"A",subtitleMain:"Software Developer",subtitleSuffix:".",body:"Currently at Google, I build human-centered systems at scale and solve problems that matter. With four years across startups and big tech, I move fast, blending clean code, product thinking, and an entrepreneurial mindset. A lifelong learner, I’m now exploring how AI can tackle complex challenges and create meaningful solutions for users.",cta:{label:"My Journey",href:"#journey"}},journey:{heading:"My Journey",subheading:"From campus beginnings to startup chaos and global-scale systems at Google. Driven by curiosity, adaptability, and the joy of building.",timeline:[{title:"Google",role:"Software Developer",period:"2024 – Present",body:"Working on large‑scale systems that touch millions, while exploring AI’s potential and honing a builder’s mindset for the next entrepreneurial leap."},{title:"Startup Journey",role:"Founding Engineer",period:"2021 - 2023",body:"Built from zero to one, rapid iteration, many hats, and creating something from nothing. Learned resilience, adaptability, and product thinking."},{title:"Computer Science Engineering",role:"University Education",period:"2017 – 2021",body:"Strengthened foundations in algorithms, systems, and software engineering. Discovered a passion for building solutions that matter."}]},building:{heading:"What I’m Building",subheading:"Where passion meets execution: current projects, experiments, and startup ideas.",items:[{title:"Smart AI Workflows",status:"In Development",body:"Designing intelligent AI workflows that simplify day-to-day tasks, boost productivity, and give you back precious hours.",tech:["AI","Automation","Productivity"],icon:"code",color:"gradient-purple",links:{repo:null,demo:null}},{title:"Mindful Companion",status:"Conceptualizing",body:"Your AI-powered partner for emotional well-being. Personalized insights and mindfulness practices to help you thrive",tech:["AI","Mental Health","Mindfulness"],icon:"lightbulb",color:"gradient-purple",links:{repo:null,demo:null}},{title:"AI-Powered Astrology",status:"Planning",body:"A unique blend of ancient wisdom and modern AI, creating personalized astrological insights that resonate with today’s seekers.",tech:["AI","Astrology","Personal Development"],icon:"lightbulb",color:"gradient-purple",links:{repo:null,demo:null}}],cta:{label:"Let’s Build Together",href:"#connect"}},recommendations:{heading:"Kind Words",subheading:"Grateful for these kind words from people I've worked with.",quotes:[{quote:"Aditya's ability to simplify complex concepts is impressive. He has a knack for making the technical accessible. His ability to communicate effectively with both technical and non-technical stakeholders is a huge asset.",author:"Vaishali",role:"Manager, Google"},{quote:"Aditya's three years of work with me showcased his remarkable curiosity and knack for grasping complex topics through insightful questioning. He's a smart worker, efficiently tackling challenges, a trait particularly valuable in a software developer.",author:"Kedar Chandrayan",role:"Co-Founder TrueSparrow"},{quote:"Aditya demonstrates exceptional teamwork abilities, making collaboration with him a pleasure. His engineering skills rank among the finest I've encountered.",author:"Alpesh Modi",role:"Director Engineering, TrueSparrow"}]},connect:{heading:"Let’s Connect",body:"Always open to meaningful conversations, whether it's about startups, the tech industry, finance, AI experiments, life stories, learning, or travel adventures.",links:[{label:"LinkedIn",desc:"Professional updates & network",href:"https://www.linkedin.com/in/adityaraj-singh/"},{label:"Topmate",desc:"Book a 1:1 session",href:"https://topmate.io/aditya_raj_singh"},{label:"Twitter",desc:"Thoughts, tech, and experiments",href:"https://x.com/adityarajsingh_"},{label:"Email",desc:"Let's collaborate",href:"mailto:hi.adityarajsingh@gmail.com"}]},about:{heading:"I'm Aditya.",subheading:"Software Engineer at Google, scaling ideas with an entrepreneurial drive",intro1:"Over the past four years I have worked in startups and big tech, in both remote and office settings. My experience spans frontend, backend and UX, always focused on solving meaningful problems and delivering impact.",intro2:"I am currently exploring AI's potential to create transformative products and improve everyday life. With an entrepreneurial approach, I aim to turn ideas into practical, valuable solutions.",principlesHeading:"What Drives Me",principles:[{title:"Curiosity & Learning",body:"Always exploring, questioning, and growing through new experiences."},{title:"Tech & AI",body:"Fascinated by technology’s potential to shape the future."},{title:"Problem Solving",body:"Driven to untangle challenges and turn ideas into impactful solutions."},{title:"Product Thinking",body:"Designing products with user needs at the forefront."}],narrative1:"My first encounter with Java as a kid felt like magic. Watching a few lines of code perform what would take hours for a human sparked a deep curiosity. That drive to understand how things work led me to study Computer Science and Engineering, where I explored how computers think, how systems operate, and how software can shape the world. Programming quickly became my playground.",narrative2:"While building my skills as an engineer, I became fascinated by why people choose one product over another. I wanted to understand users, their needs, and what makes a product truly work for them. This curiosity pushed me toward product thinking and entrepreneurship, experimenting with side projects and blending technology with real-world problems to create something meaningful.",narrative3:"Beyond tech, I explore the world through travel, photography, and meeting new people. Sports keep me grounded, from weekly basketball games to following cricket. I stay active, dive into finance and economics, and often reflect on philosophy. Every experience, whether on the court, in a new city, or over a coffee, adds to how I see the world and the problems I want to solve.",beyondHeading:"Beyond Code",beyondBullets:["Capturing landscapes through photography","Exploring new cities","Diving into financial markets","Geeking out on philosophy and life design"],tags:["Building","Learning","Traveling","Photography"]},footer:{name:"Aditya Raj Singh",tagline:"Building, Solving & Learning Daily",socials:[{label:"LinkedIn",href:"https://www.linkedin.com/in/adityaraj-singh/"},{label:"GitHub",href:"https://github.com/AdityaRajSingh"},{label:"Topmate",href:"https://topmate.io/aditya_raj_singh"},{label:"Twitter",href:"https://x.com/hi_adityasingh"},{label:"Email",href:"mailto:hi.adityarajsingh@gmail.com"}],navigation:[{label:"About",href:"/about",external:!1},{label:"Blog",href:"/blog",external:!1},{label:"Journey",href:"#journey",external:!1},{label:"Work",href:"#building",external:!1},{label:"Connect",href:"#connect",external:!1}],copyright:`© ${new Date().getFullYear()} Aditya Raj Singh. All rights reserved.`,builtWith:{textBefore:"Built with React and",icon:"heart",textAfter:"for code"}}},HeroSection=()=>{const e=useNavigate(),o=createNavigationHandler(e),s=()=>{o.goToSection("journey")};return jsxRuntimeExports.jsxs("section",{className:"min-h-screen flex items-center justify-center relative overflow-hidden pt-20",children:[jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-layered"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-depth opacity-60"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-to-br from-primary/8 via-background/50 to-accent/8"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-radial from-primary/15 via-transparent to-transparent opacity-40"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 opacity-[0.02] bg-gradient-to-br from-foreground via-transparent to-foreground"}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[15%] left-[8%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[12%] right-[10%] text-primary",delay:1}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[20%] right-[25%] text-accent/80",delay:2}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[15%] left-[12%] text-primary",delay:.5}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[20%] right-[8%] text-accent",delay:1.5}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[75%] left-[20%] text-primary/80",delay:3}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[25%] left-[5%] text-accent/60",delay:2.5}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[12%] right-[15%] text-primary/60",delay:4}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[80%] right-[30%] text-accent/70",delay:3.5}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[18%] left-[35%] text-primary/50",delay:5}),jsxRuntimeExports.jsx(SparkleElement,{className:"block sm:hidden top-[15%] left-[10%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"block sm:hidden bottom-[20%] right-[10%] text-primary",delay:1}),jsxRuntimeExports.jsx("div",{className:"container mx-auto px-4 sm:px-6 text-center relative z-10",children:jsxRuntimeExports.jsxs("div",{className:"animate-fade-in",children:[jsxRuntimeExports.jsxs("h1",{className:"text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-4 sm:mb-6 leading-tight",children:[siteContent.hero.titlePrefix," ",jsxRuntimeExports.jsx("span",{className:"text-primary",children:siteContent.hero.name}),jsxRuntimeExports.jsx("span",{className:"text-accent",children:siteContent.hero.titleSuffix})]}),jsxRuntimeExports.jsx("h2",{className:"text-xl sm:text-2xl md:text-3xl font-medium text-foreground mb-6 sm:mb-8 animate-slide-up",children:jsxRuntimeExports.jsxs("div",{className:"relative w-full",children:[jsxRuntimeExports.jsx("span",{className:"invisible block",children:siteContent.hero.subtitle}),jsxRuntimeExports.jsxs("div",{className:"absolute inset-0 flex items-center justify-center",children:[jsxRuntimeExports.jsxs("div",{className:"absolute left-0 right-0 text-center whitespace-normal transition-subtitle",style:{"--i":0},children:["A ",jsxRuntimeExports.jsx("span",{className:"text-primary font-semibold",children:"Software Developer"})]}),jsxRuntimeExports.jsxs("div",{className:"absolute left-0 right-0 text-center whitespace-normal transition-subtitle",style:{"--i":1},children:["With ",jsxRuntimeExports.jsx("span",{className:"text-primary font-semibold",children:"Entrepreneurial Mindset"})]}),jsxRuntimeExports.jsxs("div",{className:"absolute left-0 right-0 text-center whitespace-normal transition-subtitle",style:{"--i":2},children:["Driven by ",jsxRuntimeExports.jsx("span",{className:"text-primary font-semibold",children:"AI & Curiosity"})]})]})]})}),jsxRuntimeExports.jsx("div",{className:"max-w-4xl mx-auto mb-8 sm:mb-12",children:jsxRuntimeExports.jsx("p",{className:"text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed animate-slide-up px-2",children:siteContent.hero.body})}),jsxRuntimeExports.jsx(Button,{onClick:s,size:"lg",className:"bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium hover-lift animate-scale-in min-h-[48px] sm:min-h-[52px]",children:siteContent.hero.cta.label})]})})]})},Card=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("div",{ref:s,className:cn("rounded-lg border bg-card text-card-foreground shadow-sm",e),...o}));Card.displayName="Card";const CardHeader=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("div",{ref:s,className:cn("flex flex-col space-y-1.5 p-6",e),...o}));CardHeader.displayName="CardHeader";const CardTitle=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("h3",{ref:s,className:cn("text-2xl font-semibold leading-none tracking-tight",e),...o}));CardTitle.displayName="CardTitle";const CardDescription=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("p",{ref:s,className:cn("text-sm text-muted-foreground",e),...o}));CardDescription.displayName="CardDescription";const CardContent=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("div",{ref:s,className:cn("p-6 pt-0",e),...o}));CardContent.displayName="CardContent";const CardFooter=reactExports.forwardRef(({className:e,...o},s)=>jsxRuntimeExports.jsx("div",{ref:s,className:cn("flex items-center p-6 pt-0",e),...o}));CardFooter.displayName="CardFooter";const ICONS$1={code:Code,lightbulb:Lightbulb,github:Github},COLOR_CLASSES={"gradient-purple":"bg-gradient-purple","gradient-teal":"bg-gradient-teal","gradient-warm":"bg-gradient-warm"},BuildingSection=()=>{const{heading:e,subheading:o,items:s,cta:a}=siteContent.building;return jsxRuntimeExports.jsxs("section",{id:"building",className:"py-16 md:py-20 lg:py-24 relative overflow-hidden",children:[jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-building"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 opacity-[0.02] bg-gradient-to-br from-foreground via-transparent to-foreground"}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[20%] left-[5%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[75%] right-[8%] text-primary",delay:1}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[45%] right-[25%] text-accent/80",delay:2}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[20%] left-[18%] text-primary/80",delay:1.5}),jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:[jsxRuntimeExports.jsxs("div",{className:"text-center mb-12 md:mb-16 lg:mb-20",children:[jsxRuntimeExports.jsx("h2",{className:"text-4xl md:text-5xl font-bold text-foreground mb-4",children:e}),jsxRuntimeExports.jsx("p",{className:"text-xl text-muted-foreground max-w-2xl mx-auto",children:o})]}),jsxRuntimeExports.jsx("div",{className:"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-10",children:s.map(c=>{var tt,nt,rt;const g=c.icon&&ICONS$1[c.icon]?ICONS$1[c.icon]:Lightbulb,et=c.color&&COLOR_CLASSES[c.color]?COLOR_CLASSES[c.color]:"bg-card";return jsxRuntimeExports.jsxs(Card,{className:"hover-lift bg-card border-border group overflow-hidden",children:[jsxRuntimeExports.jsx("div",{className:`h-2 ${et}`}),jsxRuntimeExports.jsxs(CardHeader,{children:[jsxRuntimeExports.jsxs("div",{className:"flex items-center justify-between mb-3",children:[jsxRuntimeExports.jsx("div",{className:`w-12 h-12 rounded-lg ${et} flex items-center justify-center`,children:jsxRuntimeExports.jsx(g,{className:"w-6 h-6 icon-contrast"})}),jsxRuntimeExports.jsx("span",{className:"text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full",children:c.status})]}),jsxRuntimeExports.jsx(CardTitle,{className:"text-xl font-semibold text-foreground group-hover:text-primary transition-colors",children:c.title})]}),jsxRuntimeExports.jsxs(CardContent,{children:[jsxRuntimeExports.jsx("p",{className:"text-muted-foreground mb-4 leading-relaxed",children:c.body}),(tt=c.tech)!=null&&tt.length?jsxRuntimeExports.jsx("div",{className:"flex flex-wrap gap-2 mb-4",children:c.tech.map(it=>jsxRuntimeExports.jsx("span",{className:"text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded",children:it},it))}):null,jsxRuntimeExports.jsxs("div",{className:"flex items-center justify-between",children:[jsxRuntimeExports.jsx("span",{className:"text-sm text-muted-foreground",children:c.status==="In Development"?"🚧 Active":c.status==="Planning"?"📋 Planned":"💡 Concept"}),(nt=c.links)!=null&&nt.repo?jsxRuntimeExports.jsxs("a",{href:c.links.repo,target:"_blank",rel:"noopener noreferrer",className:"inline-flex items-center px-3 py-2 text-sm font-medium rounded bg-transparent hover:bg-muted transition-colors",children:[jsxRuntimeExports.jsx(Github,{className:"w-4 h-4 mr-2"}),"Repo"]}):(rt=c.links)!=null&&rt.demo?jsxRuntimeExports.jsxs("a",{href:c.links.demo,target:"_blank",rel:"noopener noreferrer",className:"inline-flex items-center px-3 py-2 text-sm font-medium rounded bg-transparent hover:bg-muted transition-colors",children:[jsxRuntimeExports.jsx(ExternalLink,{className:"w-4 h-4 mr-2"}),"Demo"]}):c.status==="In Development"?jsxRuntimeExports.jsxs(Button,{variant:"ghost",size:"sm",disabled:!0,children:[jsxRuntimeExports.jsx(Github,{className:"w-4 h-4 mr-2"}),"Coming Soon"]}):null]})]})]},c.title)})}),jsxRuntimeExports.jsx("div",{className:"text-center mt-16",children:jsxRuntimeExports.jsx(Button,{variant:"outline",size:"lg",onClick:()=>{const c=document.querySelector(a.href);c&&c.scrollIntoView({behavior:"smooth"})},className:"hover:bg-accent hover:text-accent-foreground",children:a.label})})]})]})},JourneySection=()=>{const e=[Building,Rocket,GraduationCap],o=["bg-gradient-teal","bg-gradient-purple","bg-gradient-warm"],s=siteContent.journey.timeline.map((a,c)=>({year:a.period,title:a.title,role:a.role,description:a.body,icon:e[c]||Building,color:o[c]||"bg-gradient-teal"}));return jsxRuntimeExports.jsxs("section",{id:"journey",className:"py-16 md:py-20 lg:py-24 relative overflow-hidden",children:[jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-journey"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-journey-depth opacity-70"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-to-br from-secondary/12 via-muted/40 to-accent/10"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-radial from-secondary/20 via-transparent to-transparent opacity-50"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 opacity-[0.03] bg-gradient-to-br from-foreground via-transparent to-foreground"}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[10%] left-[8%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[85%] right-[10%] text-primary",delay:1}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[30%] right-[15%] text-accent/80",delay:2}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[10%] left-[20%] text-primary/80",delay:1.5}),jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:[jsxRuntimeExports.jsxs("div",{className:"text-center mb-12 md:mb-16 lg:mb-20",children:[jsxRuntimeExports.jsx("h2",{className:"text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4",children:siteContent.journey.heading}),jsxRuntimeExports.jsx("p",{className:"text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2",children:siteContent.journey.subheading})]}),jsxRuntimeExports.jsxs("div",{className:"max-w-4xl mx-auto relative",children:[jsxRuntimeExports.jsx("div",{"aria-hidden":!0,className:"hidden sm:block absolute left-6 sm:left-8 top-16 sm:top-20 bottom-16 sm:bottom-20 w-0.5 bg-foreground/15 dark:bg-foreground/25 pointer-events-none"}),s.map((a,c)=>jsxRuntimeExports.jsxs("div",{className:"relative mb-8 md:mb-12 lg:mb-16 last:mb-0",children:[jsxRuntimeExports.jsxs("div",{className:"hidden sm:flex items-center",children:[jsxRuntimeExports.jsx("div",{className:"relative z-10 flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-teal flex items-center justify-center mr-4 sm:mr-8",children:jsxRuntimeExports.jsx(a.icon,{className:"w-6 h-6 sm:w-8 sm:h-8 icon-contrast"})}),jsxRuntimeExports.jsx(Card,{className:"flex-1 hover-lift bg-card border-border",children:jsxRuntimeExports.jsxs(CardContent,{className:"p-4 md:p-6",children:[jsxRuntimeExports.jsxs("div",{className:"flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4",children:[jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx("h3",{className:"text-xl sm:text-2xl font-bold text-foreground mb-1",children:a.title}),jsxRuntimeExports.jsx("p",{className:"text-primary font-medium",children:a.role})]}),jsxRuntimeExports.jsx("div",{className:"text-sm text-muted-foreground mt-2 lg:mt-0",children:a.year})]}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed text-sm sm:text-base",children:a.description})]})})]}),jsxRuntimeExports.jsx("div",{className:"sm:hidden",children:jsxRuntimeExports.jsx(Card,{className:"hover-lift bg-card border-border",children:jsxRuntimeExports.jsxs(CardContent,{className:"p-4",children:[jsxRuntimeExports.jsxs("div",{className:"flex items-center mb-4",children:[jsxRuntimeExports.jsx("div",{className:"flex-shrink-0 w-12 h-12 rounded-full bg-gradient-teal flex items-center justify-center mr-4",children:jsxRuntimeExports.jsx(a.icon,{className:"w-6 h-6 icon-contrast"})}),jsxRuntimeExports.jsxs("div",{className:"flex-1",children:[jsxRuntimeExports.jsx("h3",{className:"text-lg font-bold text-foreground mb-1",children:a.title}),jsxRuntimeExports.jsx("p",{className:"text-primary font-medium text-sm",children:a.role})]})]}),jsxRuntimeExports.jsx("div",{className:"text-xs text-muted-foreground mb-3",children:a.year}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed text-sm",children:a.description})]})})})]},c))]})]})]})},RecommendationsSection=()=>{const{heading:e,subheading:o,quotes:s}=siteContent.recommendations;return jsxRuntimeExports.jsxs("section",{className:"py-16 md:py-20 lg:py-24 relative overflow-hidden",children:[jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-recommendations"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 opacity-[0.03] bg-gradient-to-br from-foreground via-transparent to-foreground"}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[15%] left-[10%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[80%] right-[12%] text-primary",delay:1}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[40%] right-[20%] text-accent/80",delay:2}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[15%] left-[15%] text-primary/80",delay:1.5}),jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:[jsxRuntimeExports.jsxs("div",{className:"text-center mb-12 md:mb-16 lg:mb-20",children:[jsxRuntimeExports.jsx("h2",{className:"text-4xl md:text-5xl font-bold text-foreground mb-4",children:e}),jsxRuntimeExports.jsx("p",{className:"text-xl text-muted-foreground max-w-2xl mx-auto",children:o})]}),jsxRuntimeExports.jsx("div",{className:"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-10",children:s.map(a=>jsxRuntimeExports.jsx(Card,{className:"hover-lift bg-card border-border",children:jsxRuntimeExports.jsxs(CardContent,{className:"p-5 md:p-6",children:[jsxRuntimeExports.jsx("div",{className:"w-12 h-12 rounded-full bg-gradient-teal flex items-center justify-center mb-4",children:jsxRuntimeExports.jsx(Quote,{className:"w-6 h-6 icon-contrast"})}),jsxRuntimeExports.jsxs("blockquote",{className:"text-muted-foreground mb-6 leading-relaxed",children:['"',a.quote,'"']}),jsxRuntimeExports.jsxs("div",{className:"border-t border-border pt-4",children:[jsxRuntimeExports.jsx("div",{className:"font-semibold text-foreground",children:a.author}),jsxRuntimeExports.jsx("div",{className:"text-sm text-muted-foreground",children:a.role})]})]})},`${a.author}-${a.role}`))})]})]})},ICONS={LinkedIn:Linkedin,Topmate:Calendar,Twitter,Email:Mail},ConnectSection=()=>{const{heading:e,body:o,links:s}=siteContent.connect;return jsxRuntimeExports.jsxs("section",{id:"connect",className:"py-16 md:py-20 lg:py-24 relative overflow-hidden",children:[jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-connect"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 opacity-[0.02] bg-gradient-to-br from-foreground via-transparent to-foreground"}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[25%] left-[12%] text-accent",delay:0}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[70%] right-[15%] text-primary",delay:1}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block top-[50%] right-[8%] text-accent/80",delay:2}),jsxRuntimeExports.jsx(SparkleElement,{className:"hidden sm:block bottom-[25%] left-[25%] text-primary/80",delay:1.5}),jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:[jsxRuntimeExports.jsxs("div",{className:"text-center mb-12 md:mb-16 lg:mb-20",children:[jsxRuntimeExports.jsx("h2",{className:"text-4xl md:text-5xl font-bold text-foreground mb-8",children:e}),jsxRuntimeExports.jsx("p",{className:"text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed",children:o})]}),jsxRuntimeExports.jsx("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 max-w-4xl mx-auto",children:s.map(a=>{const c=ICONS[a.label]||Mail,g=a.href.startsWith("http");return jsxRuntimeExports.jsx("a",{href:a.href,target:g?"_blank":void 0,rel:g?"noopener noreferrer":void 0,className:"block",tabIndex:0,"aria-label":`Connect via ${a.label}`,children:jsxRuntimeExports.jsx(Card,{className:"hover-lift bg-card border-border group",children:jsxRuntimeExports.jsx(CardContent,{className:"p-6",children:jsxRuntimeExports.jsxs("div",{className:"flex items-center space-x-4",children:[jsxRuntimeExports.jsx("div",{className:"w-12 h-12 rounded-full bg-gradient-teal flex items-center justify-center",children:jsxRuntimeExports.jsx(c,{className:"w-6 h-6 icon-contrast","aria-hidden":"true"})}),jsxRuntimeExports.jsxs("div",{className:"flex-1",children:[jsxRuntimeExports.jsx("span",{className:"text-lg font-semibold text-foreground group-hover:text-primary transition-colors",children:a.label}),jsxRuntimeExports.jsx("p",{className:"text-sm text-muted-foreground",children:a.desc})]})]})})})},a.href)})})]})]})},Footer=()=>{const e=useNavigate(),o=createNavigationHandler(e);new Date().getFullYear();const s=(a,c)=>{a.startsWith("#")?o.goToSection(a.slice(1)):a==="/about"?o.goToAbout():a==="/blog"?o.goToBlog():a==="/"&&o.goToHome()};return jsxRuntimeExports.jsx("footer",{className:"bg-gradient-to-t from-muted/30 to-background border-t border-border/50 py-8 sm:py-12",children:jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6",children:[jsxRuntimeExports.jsx("div",{className:"space-y-6 sm:space-y-8 lg:space-y-0",children:jsxRuntimeExports.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8",children:[jsxRuntimeExports.jsxs("div",{className:"text-center sm:text-left lg:text-left col-span-1 sm:col-span-2 lg:col-span-1",children:[jsxRuntimeExports.jsx("h3",{className:"text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4",children:siteContent.footer.name}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground text-sm sm:text-base",children:siteContent.footer.tagline})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx("h4",{className:"font-semibold text-foreground mb-3 sm:mb-4",children:"Navigate"}),jsxRuntimeExports.jsx("div",{className:"space-y-1 sm:space-y-2",children:siteContent.footer.navigation.map(a=>a.href.startsWith("#")||a.href.startsWith("/")?jsxRuntimeExports.jsx("button",{onClick:()=>s(a.href,a.label),className:"block text-muted-foreground hover:text-foreground transition-colors text-left py-1 text-sm sm:text-base min-h-[44px] sm:min-h-0 flex items-center sm:block",children:a.label},a.label):jsxRuntimeExports.jsx("a",{href:a.href,target:"_blank",rel:"noopener noreferrer",className:"block text-muted-foreground hover:text-foreground transition-colors py-1 text-sm sm:text-base min-h-[44px] sm:min-h-0 flex items-center sm:block",children:a.label},a.label))})]}),jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx("h4",{className:"font-semibold text-foreground mb-3 sm:mb-4",children:"Connect"}),jsxRuntimeExports.jsx("div",{className:"space-y-1 sm:space-y-2",children:siteContent.footer.socials.map(a=>{const c=a.href.startsWith("http");return jsxRuntimeExports.jsx("a",{href:a.href,target:c?"_blank":void 0,rel:c?"noopener noreferrer":void 0,className:"block text-muted-foreground hover:text-foreground transition-colors py-1 text-sm sm:text-base min-h-[44px] sm:min-h-0 flex items-center sm:block",children:a.label},a.label)})})]})]})}),jsxRuntimeExports.jsxs("div",{className:"border-t border-border mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0",children:[jsxRuntimeExports.jsx("p",{className:"text-muted-foreground text-xs sm:text-sm text-center sm:text-left",children:siteContent.footer.copyright}),jsxRuntimeExports.jsxs("div",{className:"flex items-center space-x-1 text-muted-foreground text-xs sm:text-sm",children:[jsxRuntimeExports.jsx("span",{children:siteContent.footer.builtWith.textBefore}),siteContent.footer.builtWith.icon==="heart"&&jsxRuntimeExports.jsx(Heart,{className:"w-3 h-3 sm:w-4 sm:h-4 text-red-500","aria-hidden":"true"}),jsxRuntimeExports.jsx("span",{children:siteContent.footer.builtWith.textAfter})]})]})]})})},Index=()=>jsxRuntimeExports.jsxs("div",{className:"min-h-screen bg-background",children:[jsxRuntimeExports.jsx(Navigation,{}),jsxRuntimeExports.jsx(HeroSection,{}),jsxRuntimeExports.jsx(JourneySection,{}),jsxRuntimeExports.jsx(BuildingSection,{}),jsxRuntimeExports.jsx(RecommendationsSection,{}),jsxRuntimeExports.jsx(ConnectSection,{}),jsxRuntimeExports.jsx(Footer,{})]}),profilePhoto="/assets/profile-photo-B7lAilVZ.jpg",{about}=siteContent,About=()=>{const e=siteContent.hero.body.slice(0,160),o=(typeof window<"u"?window.location.origin:"")+"/about";return jsxRuntimeExports.jsxs("div",{className:"min-h-screen bg-gradient-soft",children:[jsxRuntimeExports.jsx(Navigation,{}),jsxRuntimeExports.jsxs(Helmet,{children:[jsxRuntimeExports.jsx("title",{children:"Aditya Raj Singh — Software Developer at Google"}),jsxRuntimeExports.jsx("meta",{name:"description",content:e}),jsxRuntimeExports.jsx("meta",{property:"og:description",content:e}),jsxRuntimeExports.jsx("meta",{name:"twitter:description",content:e}),jsxRuntimeExports.jsx("link",{rel:"canonical",href:o})]}),jsxRuntimeExports.jsx("section",{className:"min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-layered pt-20",children:jsxRuntimeExports.jsx("div",{className:"container mx-auto px-4 sm:px-6 relative z-10",children:jsxRuntimeExports.jsxs("div",{className:"grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto",children:[jsxRuntimeExports.jsx("div",{className:"flex justify-center lg:justify-start order-2 lg:order-1",children:jsxRuntimeExports.jsx("div",{className:"w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden bg-gradient-subtle",children:jsxRuntimeExports.jsx("img",{src:profilePhoto,alt:siteContent.footer.name,className:"w-full h-full object-cover"})})}),jsxRuntimeExports.jsxs("div",{className:"animate-fade-in order-1 lg:order-2",children:[jsxRuntimeExports.jsx("h1",{className:"text-4xl md:text-5xl font-bold text-foreground mb-6",children:about.heading}),jsxRuntimeExports.jsx("h2",{className:"text-2xl md:text-3xl text-primary mb-8 font-medium",children:about.subheading}),jsxRuntimeExports.jsxs("div",{className:"space-y-6 text-lg text-muted-foreground leading-relaxed mb-8",children:[jsxRuntimeExports.jsx("p",{children:about.intro1}),jsxRuntimeExports.jsx("p",{children:about.intro2})]}),jsxRuntimeExports.jsxs("div",{className:"flex flex-wrap gap-3",children:[jsxRuntimeExports.jsx("div",{className:"px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium",children:"Learning"}),jsxRuntimeExports.jsx("div",{className:"px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium",children:"Building"}),jsxRuntimeExports.jsx("div",{className:"px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium",children:"Growing"})]})]})]})})}),jsxRuntimeExports.jsx("section",{className:"py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-journey",children:jsxRuntimeExports.jsxs("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:[jsxRuntimeExports.jsxs("div",{className:"max-w-4xl mx-auto text-center mb-12 md:mb-16",children:[jsxRuntimeExports.jsx("h2",{className:"text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4",children:about.principlesHeading}),jsxRuntimeExports.jsx("p",{className:"text-lg sm:text-xl text-muted-foreground leading-relaxed px-2",children:"Some core values and principles that guide my work and life."})]}),jsxRuntimeExports.jsx("div",{className:"max-w-6xl mx-auto",children:jsxRuntimeExports.jsx("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12",children:about.principles.map((s,a)=>jsxRuntimeExports.jsxs("div",{children:[jsxRuntimeExports.jsx("h3",{className:"text-xl font-semibold text-foreground mb-4",children:String(a+1).padStart(2,"0")}),jsxRuntimeExports.jsx("h4",{className:"text-2xl font-bold text-foreground mb-4",children:s.title}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed",children:s.body})]},s.title))})})]})}),jsxRuntimeExports.jsx("section",{className:"py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-soft",children:jsxRuntimeExports.jsx("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:jsxRuntimeExports.jsx("div",{className:"max-w-4xl mx-auto",children:jsxRuntimeExports.jsxs("div",{className:"prose prose-lg max-w-none space-y-6",children:[jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed",children:about.narrative1}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed",children:about.narrative2}),jsxRuntimeExports.jsx("p",{className:"text-muted-foreground leading-relaxed",children:about.narrative3})]})})})}),jsxRuntimeExports.jsx("section",{className:"py-16 md:py-20 lg:py-24 relative overflow-hidden bg-gradient-recommendations",children:jsxRuntimeExports.jsx("div",{className:"container mx-auto px-4 sm:px-6 md:px-8 relative z-10",children:jsxRuntimeExports.jsxs("div",{className:"max-w-4xl mx-auto",children:[jsxRuntimeExports.jsx("h2",{className:"text-3xl font-bold text-foreground mb-12 text-center",children:about.beyondHeading}),jsxRuntimeExports.jsx("ul",{className:"flex flex-wrap gap-2 mb-8 justify-center",children:about.beyondBullets.map(s=>jsxRuntimeExports.jsx("li",{className:"px-3 py-1 rounded-full bg-muted text-muted-foreground text-sm",children:s},s))}),jsxRuntimeExports.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8",children:[jsxRuntimeExports.jsxs("div",{className:"group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer",children:[jsxRuntimeExports.jsx("img",{src:"https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600&h=400&fit=crop&crop=faces",alt:"Travel adventure",loading:"lazy",className:"w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"}),jsxRuntimeExports.jsxs("div",{className:"absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300",children:[jsxRuntimeExports.jsx("h3",{className:"text-xl font-semibold mb-2",children:"Travel & Adventure"}),jsxRuntimeExports.jsx("p",{className:"text-sm text-white/90",children:"Exploring new places, cultures, and experiences around the world."})]})]}),jsxRuntimeExports.jsxs("div",{className:"group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer",children:[jsxRuntimeExports.jsx("img",{src:"https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&h=400&fit=crop&crop=faces",alt:"Nature and hiking",loading:"lazy",className:"w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"}),jsxRuntimeExports.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"}),jsxRuntimeExports.jsxs("div",{className:"absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300",children:[jsxRuntimeExports.jsx("h3",{className:"text-xl font-semibold mb-2",children:"Nature & Hiking"}),jsxRuntimeExports.jsx("p",{className:"text-sm text-white/90",children:"Finding peace and inspiration in the great outdoors."})]})]})]})]})})}),jsxRuntimeExports.jsx(Footer,{})]})},badgeVariants=cva("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",{variants:{variant:{default:"border-transparent bg-primary text-primary-foreground hover:bg-primary/80",secondary:"border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",destructive:"border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",outline:"text-foreground"}},defaultVariants:{variant:"default"}});function Badge({className:e,variant:o,...s}){return jsxRuntimeExports.jsx("div",{className:cn(badgeVariants({variant:o}),e),...s})}const __vite_glob_0_0=`---
-title: "The AI Revolution: A Developer's Perspective"
-slug: "ai-revolution-developers-perspective"
+title: "I Was Wrong About AI (And You Probably Are Too)"
+slug: "wrong-about-ai-coding-tools"
 date: "2024-12-15"
-excerpt: "Six months ago, I thought AI coding tools were just hype. Today, I can't code without them. Here's my honest take on the AI revolution."
+excerpt: "Called AI coding tools 'glorified autocomplete' six months ago. Now I can't code without them. Here's what changed my mind."
 heroImage: "ai-revolution-developers-perspective.svg"
 tags: ["AI", "Development", "Future", "Career"]
 ---
 
-# The AI Revolution: A Developer's Perspective
+# I Was Wrong About AI (And You Probably Are Too)
 
-"This is just glorified autocomplete."
+"Glorified autocomplete."
 
-That's what I told my colleague six months ago when he showed me GitHub Copilot. Fast forward to today, and I'm writing this post with AI assistance, debugging faster than ever, and shipping features at lightning speed.
+That's what I called GitHub Copilot six months ago. My colleague showed me the demo. I rolled my eyes.
 
-I was wrong. Spectacularly wrong.
+Today? I'm writing this post with AI help, debugging at warp speed, and shipping features faster than ever.
 
-## The Moment Everything Changed
+Turns out I was spectacularly wrong.
 
-Picture this: It's 2 AM, I'm staring at a cryptic error message, and Stack Overflow isn't helping. In desperation, I paste the error into ChatGPT. Within seconds, I get not just a solution, but an explanation of why it happened and how to prevent it.
+## My 2 AM Wake-Up Call
 
-That's when it hit me—this isn't just a tool. It's a paradigm shift.
+2 AM. Cryptic error message. Stack Overflow useless.
 
-## What AI Actually Does (Spoiler: It's Not Magic)
+Out of desperation, I paste the error into ChatGPT.
 
-Forget the hype. Here's what AI tools actually do in my daily workflow:
+Boom. Not just a solution. A full explanation of why it happened and how to prevent it next time.
 
-**Morning Coffee + Architecture Planning**  
-I bounce ideas off AI like I would a senior colleague. "What if we used Redis here?" "How would you handle this edge case?" It's not giving me the final answer—it's helping me think through options I might miss.
+That's when it clicked. This isn't just a tool. It's a game changer.
 
-**The Coding Flow State**  
-AI handles the boring stuff—boilerplate, common patterns, repetitive functions. This frees my brain for the interesting problems: business logic, user experience, system design.
+## What AI Actually Does (Hint: Not Magic)
 
-**The 3 AM Debugging Sessions**  
-Instead of diving into documentation rabbit holes, I describe my problem in plain English. AI translates that into actionable solutions. It's like having a rubber duck that talks back.
+Forget the hype. Here's my real daily workflow:
 
-## The Skills That Actually Matter Now
+**Morning brainstorming:** I bounce ideas off AI like a senior colleague. "Redis here?" "How about this edge case?" It doesn't give final answers. It helps me see options I'd miss.
 
-### Prompt Engineering (Yes, It's a Real Thing)
+**Deep work mode:** AI handles the boring stuff. Boilerplate. Common patterns. Repetitive functions. My brain stays focused on the fun problems.
 
-Think of AI as a really smart intern who needs clear instructions:
+**Late-night debugging:** Instead of documentation rabbit holes, I describe problems in plain English. AI translates to actionable fixes. Like a rubber duck that actually talks back.
 
-**Instead of:** "Make a login form"
-**Try:** "Create a React login form with email validation, password strength indicator, and loading states. Use TypeScript and follow accessibility guidelines."
+## The New Skills That Matter
+
+### Prompt Engineering (Yeah, It's Real)
+
+Treat AI like a smart intern who needs clear instructions.
+
+**Bad:** "Make a login form"  
+**Good:** "Create a React login form with email validation, password strength indicator, loading states. TypeScript. Accessibility compliant."
 
 The difference? Night and day.
 
-### Critical Thinking on Steroids
+### Critical Thinking 2.0
 
-AI can write code, but it can't understand your users, your business constraints, or your technical debt. That's still on you. The skill isn't writing code anymore—it's knowing what code to write.
+AI writes code. But it can't understand your users, business constraints, or technical debt.
 
-### System Design Becomes Your Superpower
+That's still your job.
 
-As AI handles more implementation details, your ability to architect systems becomes your main differentiator. Think conductor, not musician.
+The skill isn't writing code anymore. It's knowing what code to write.
 
-## Busting the Myths
+### System Design Is Your Superpower
+
+AI handles implementation. You handle architecture.
+
+Think conductor, not musician.
+
+## Myth Busting Time
 
 **"AI will replace developers"**  
-Nope. AI amplifies developers. It's like saying calculators replaced mathematicians. Spoiler alert: they didn't.
+Nope. AI amplifies us. Calculators didn't replace mathematicians. Neither will AI replace coders.
 
-**"You don't need to learn coding anymore"**  
-Double nope. You need to understand code to use AI effectively. It's like using GPS—you still need to know how to drive.
+**"You don't need to learn coding"**  
+Hard nope. You need to understand code to use AI well. GPS doesn't mean you skip driving lessons.
 
-**"AI code is always perfect"**  
-Triple nope. AI makes mistakes. Sometimes subtle, sometimes spectacular. Code review isn't optional—it's essential.
+**"AI code is perfect"**  
+Biggest nope. AI makes mistakes. Subtle ones. Spectacular ones. Code review isn't optional.
 
-## My Honest Take on the Future
+## Where We're Heading
 
-Here's where I think we're heading:
+My predictions:
 
-- **Smarter IDEs** that understand your entire codebase
-- **AI code reviewers** that catch bugs before they ship
-- **Natural language programming** (describe what you want, get working code)
-- **Specialized AI** trained on specific frameworks and domains
+**Smarter IDEs** that know your entire codebase  
+**AI code reviewers** catching bugs before shipping  
+**Natural language coding** (describe it, get working code)  
+**Specialized AI** trained on specific frameworks  
 
-But here's the thing—the fundamentals won't change. Good developers will still be problem solvers, system thinkers, and user advocates.
+But the fundamentals stay the same. Good developers solve problems, think in systems, and advocate for users.
 
-## Three Ways to Thrive (Not Just Survive)
+AI just makes us better at it.
 
-### 1. Start Small, Think Big
-Begin with simple tasks. Generate utility functions. Write test cases. Build confidence before tackling complex problems.
+## How to Thrive (Not Just Survive)
 
-### 2. Stay Skeptical
-Treat AI-generated code like code from a junior developer. It might be brilliant, it might be broken. Your job is to know the difference.
+### Start Small
+Generate utility functions. Write test cases. Build confidence before tackling complex stuff.
 
-### 3. Keep Learning
-AI tools evolve weekly. What works today might be obsolete tomorrow. Stay curious, stay adaptable.
+### Stay Skeptical
+Treat AI code like junior developer code. Might be brilliant. Might be broken. Your job to know the difference.
 
-## The Bottom Line
+### Keep Learning
+AI tools evolve weekly. Today's magic is tomorrow's baseline. Stay curious.
 
-The AI revolution isn't about replacement—it's about amplification. We're not becoming obsolete; we're becoming more powerful.
+## The Real Talk
 
-The question isn't whether AI will change software development. It already has.
+This isn't about replacement. It's about amplification.
 
-The question is: Will you adapt and thrive, or will you get left behind?
+We're not becoming obsolete. We're becoming more powerful.
+
+AI already changed software development. The question isn't "if."
+
+It's "will you adapt or get left behind?"
 
 I know which side I'm on.
 
 ---
 
-*Still skeptical? Try GitHub Copilot for a week. Then come back and tell me it's just autocomplete.*`,__vite_glob_0_1=`---
-title: "From Google to Startups: Key Lessons Learned"
-slug: "google-to-startups-lessons"
+*Still think it's just autocomplete? Try GitHub Copilot for a week. Then we'll talk.*`,__vite_glob_0_1=`---
+title: "Startup Chaos vs Google Scale: What I Learned From Both"
+slug: "startup-vs-google-lessons"
 date: "2024-11-28"
-excerpt: "Three years building scrappy MVPs at a startup, then joining Google's billion-user systems. Here's what I learned from both worlds."
+excerpt: "Production access on day one at a startup. Three approvals for one line at Google. Here's what both worlds taught me."
 heroImage: "google-to-startups-lessons.jpg"
 tags: ["Career", "Google", "Startups", "Growth"]
 ---
 
-# From Startups to Google: Key Lessons Learned
+# Startup Chaos vs Google Scale: What I Learned From Both
 
-"You have production access on day one. Don't break anything."
+"Production access on day one. Don't break anything."
 
-That was my welcome to startup life three years ago. No training wheels, no safety nets, just me, a laptop, and the entire codebase.
+My startup welcome. No training wheels. No safety nets. Just me, a laptop, and the entire codebase.
 
-Fast forward to today: I'm at Google, where changing a single line of code requires three approvals and impacts billions of users.
+Today at Google? One line of code needs three approvals and affects billions of users.
 
-Two worlds. Same passion. Completely different games.
+Same passion. Completely different games.
 
-## The Startup Bootcamp: Where You Learn Everything
+## Startup University: Where You Learn Everything
 
-Startups don't have the luxury of specialists. You're not just a developer—you're a problem solver, and problems don't respect job descriptions.
+Startups don't do specialists. You're not a developer. You're a problem solver.
 
-### Day One Reality Check
+Problems don't care about job descriptions.
 
-My first startup threw me into the deep end immediately:
+### Day One: Sink or Swim
 
-"The payment system is down. Figure it out."
+"Payment system's down. Fix it."
 
-No documentation. No senior engineer to guide me. Just logs, Stack Overflow, and pure determination.
+No docs. No mentor. Just logs, Stack Overflow, and caffeine.
 
-I spent 12 hours debugging a race condition in our checkout flow. When I finally fixed it, I watched our revenue dashboard jump back to normal in real-time.
+12 hours later, I found the race condition killing our checkout. Fixed it. Watched the revenue dashboard come back to life.
 
-That's when I understood: **your code isn't just code—it's the business.**
+That's when it hit me: **Your code IS the business.**
 
-### The Swiss Army Knife Developer
+### The Swiss Army Knife Life
 
-A typical week at the startup:
+My typical startup week:
 
-**Monday:** Backend API development  
-**Tuesday:** Frontend React components  
-**Wednesday:** Database optimization  
-**Thursday:** Customer support calls  
-**Friday:** Infrastructure deployment
+**Monday:** Backend APIs  
+**Tuesday:** React components  
+**Wednesday:** Database tuning  
+**Thursday:** Customer support  
+**Friday:** Infrastructure deployment  
 
-I became a full-stack engineer by necessity, not choice. And it was the best thing that ever happened to my career.
+Full-stack by necessity. Best career move ever.
 
-### Speed as a Survival Skill
+### Speed = Survival
 
-At startups, shipping fast isn't just preferred—it's survival. We'd go from idea to production in days.
+Shipping fast isn't preferred at startups. It's survival.
 
-I once built an entire admin dashboard over a weekend because a major client needed it by Monday. No design docs, no committee meetings, just pure execution.
+Idea to production in days. Not weeks. Days.
 
-The feedback loop was instant: ship, measure, learn, repeat.
+I once built an entire admin dashboard over a weekend. Major client needed it Monday. No design docs. No meetings. Pure execution.
 
-### Every Feature Matters
+Feedback loop was instant: ship, measure, learn, repeat.
 
-When you have 1,000 users instead of 1 billion, every single person counts. I'd get direct messages from users about bugs. I'd see exactly how my code changes affected conversion rates.
+### Every User Counts
 
-There's no abstraction layer between your work and business impact. It's addictive.
+1,000 users vs 1 billion users? Every person matters.
 
-## The Google Machine: Where Scale Changes Everything
+Users DMed me about bugs. I watched my code changes move conversion rates in real-time.
 
-Then I joined Google. Culture shock doesn't begin to describe it.
+No abstraction between your work and business impact.
 
-### The "Oh Shit" Moment
+It's addictive.
 
-"Your code change just affected 2 billion users."
+## The Google Machine: Where Scale Breaks Your Brain
 
-Those words hit different when you're used to thinking in thousands, not billions. Suddenly, that casual console.log statement becomes a potential performance issue for half the planet.
+Then I joined Google.
+
+Culture shock doesn't cover it.
+
+### The Reality Check
+
+"Your code change just hit 2 billion users."
+
+Those words hit different when you're used to thousands, not billions.
+
+Sudenly that casual console.log becomes a performance issue for half the planet.
 
 Scale changes everything.
 
-### Engineering Excellence as Religion
+### Engineering Excellence = Religion
 
-My first code review at Google had 47 comments. Forty-seven. For a 20-line change.
+First Google code review: 47 comments. For 20 lines of code.
 
 Every edge case questioned. Every assumption challenged. Every performance implication analyzed.
 
-It felt overwhelming at first. Then I realized: this is how you build systems that billions of people depend on daily.
+Overwhelming at first. Then I got it: This is how you build for billions.
 
-### The Long Game Mindset
+### The Decade Mindset
 
-At the startup, we optimized for next quarter. At Google, we optimize for the next decade.
+Startup: Optimize for next quarter.  
+Google: Optimize for next decade.
 
-I'm working on systems designed to handle 10x current load, even though that growth might take years. The patience required is a completely different muscle.
+I'm building systems for 10x current load. Growth that might take years.
 
-### The Specialization Luxury
+Patience is a different muscle here.
 
-At Google, I can focus deeply on specific problems. Instead of being a generalist juggling everything, I'm becoming an expert in distributed systems.
+### The Luxury of Depth
 
-The depth of knowledge available is incredible. I'm learning from people who literally wrote the papers on the technologies we use.
+At Google, I focus deeply on specific problems. Instead of juggling everything, I'm becoming a distributed systems expert.
 
-## What Startups Taught Me (That Google Values)
+The knowledge depth is incredible. I'm learning from people who wrote the papers on our tech stack.
 
-### Scrappy Problem-Solving
+## What Startups Taught Me (That Google Loves)
 
-Startups taught me to find creative solutions with limited resources. At Google, this translates to elegant solutions that don't require massive infrastructure changes.
+### Scrappy Solutions
 
-### User-First Thinking
+Startups taught me creative problem-solving with zero resources. At Google, this means elegant solutions without massive infrastructure changes.
 
-When you've talked directly to frustrated users, you never forget that real people use your code. This perspective is invaluable when building for billions.
+### Real User Empathy
+
+When you've talked to frustrated users directly, you never forget real people use your code. Invaluable when building for billions.
 
 ### Execution Speed
 
-Startup urgency is a superpower at big tech. While others debate, I prototype. While others plan, I ship MVPs for testing.
+Startup urgency is a superpower at big tech. Others debate. I prototype. Others plan. I ship MVPs.
 
-### Full-Stack Perspective
+### Full-Stack Vision
 
-Understanding the entire system—from database to UI—helps me make better architectural decisions and communicate across teams.
+Understanding database to UI helps me architect better and communicate across teams.
 
-## What Google Is Teaching Me (That Startups Need)
+## What Google Teaches (That Startups Need)
 
-### Systems Thinking at Scale
+### Scale Optimization
 
-A 0.1% performance improvement at Google saves millions in infrastructure costs. This optimization mindset is crucial for any growing startup.
+0.1% performance improvement at Google saves millions in infrastructure costs. This mindset is gold for growing startups.
 
-### Engineering Rigor
+### Engineering Discipline
 
-Proper testing, documentation, and code review processes prevent the technical debt that kills startup velocity later.
+Proper testing, docs, and code reviews prevent the technical debt that kills startup velocity later.
 
-### Long-term Architecture
+### Future-Proof Architecture
 
-Building systems that can scale 100x requires different thinking than building for current needs.
+Building for 100x scale requires different thinking than building for today.
 
-### Collaboration at Scale
+### Massive Team Coordination
 
-Working with hundreds of engineers across time zones teaches communication and coordination skills that benefit any team.
+Working with hundreds of engineers across time zones teaches communication skills that benefit any team.
 
-## The Unexpected Synergies
+## The Magic Combo
 
 ### Startup Speed + Google Quality
 
-I can move fast because of my startup experience, but now I know how to build things that last because of Google's standards.
+I move fast (startup skill) but build things that last (Google discipline).
 
 ### Google Scale + Startup Impact
 
-Understanding massive scale helps me architect better solutions, while startup experience keeps me focused on user value.
+I understand massive systems but stay focused on user value.
 
-### Technical Depth + Business Awareness
+### Technical Depth + Business Reality
 
-Google is teaching me deep technical skills, while startup experience keeps me grounded in business reality.
+Google teaches deep tech skills. Startup experience keeps me grounded in business needs.
 
-## Which Path Should You Choose?
+## Which Path Should You Pick?
 
-Honestly? Both. But if you're starting out:
+Honestly? Both.
 
-### Start with Startups If:
-- You want to learn everything quickly
-- You thrive in ambiguous environments
-- You want direct impact and ownership
-- You're comfortable with uncertainty
+But if you're starting out:
 
-### Start with Big Tech If:
-- You want to learn best practices from day one
-- You prefer structured learning environments
-- You want to work on massive-scale problems
-- You value stability and clear career paths
+### Go Startup If You:
+- Want to learn everything fast
+- Thrive in chaos
+- Want direct impact
+- Love uncertainty
+
+### Go Big Tech If You:
+- Want best practices from day one
+- Prefer structure
+- Want massive-scale problems
+- Value stability
 
 ## My Recommendation: The Hybrid Path
 
-**Years 0-3:** Join a startup. Learn everything. Move fast. Make mistakes. See direct impact.
+**Years 0-3:** Startup. Learn everything. Move fast. Make mistakes. See direct impact.
 
-**Years 3-6:** Join big tech. Learn scale. Master engineering excellence. Understand systems thinking.
+**Years 3-6:** Big tech. Learn scale. Master engineering excellence. Think in systems.
 
-**Years 6+:** Choose based on what energizes you. You'll have skills from both worlds.
+**Years 6+:** Pick what energizes you. You'll have skills from both worlds.
 
-## The Real Secret
+## The Secret Sauce
 
-The most valuable engineers aren't those who've only worked in one environment. They're the ones who can:
+The most valuable engineers aren't single-environment specialists.
 
-- Move fast when speed matters (startup skill)
-- Build for scale when growth comes (big tech skill)
+They can:
+- Move fast when speed matters (startup)
+- Build for scale when growth comes (big tech)
 - Think like an owner (startup mindset)
 - Engineer for reliability (big tech discipline)
 
-Both experiences made me a better engineer. The startup taught me to ship. Google is teaching me to scale.
+Startup taught me to ship. Google is teaching me to scale.
 
-## What I'd Tell My Younger Self
+## What I'd Tell Past Me
 
-**Don't pick sides.** Both environments have incredible value.
+**Don't pick sides.** Both have incredible value.
 
-**Embrace the discomfort.** The skills that feel hardest to learn are often the most valuable.
+**Embrace discomfort.** Hardest skills are often most valuable.
 
-**Stay curious.** Every environment has something to teach you.
+**Stay curious.** Every environment teaches something.
 
-**Build relationships.** The people you work with matter more than the company logo.
+**Build relationships.** People matter more than logos.
 
-## The Bottom Line
+## The Real Truth
 
-Startups taught me to move fast and think like an owner. Google is teaching me to build systems that last and scale.
+I'm not the same engineer I was three years ago.
 
-I'm not the same engineer I was three years ago. I'm better. More complete. More valuable.
+I'm better. More complete. More valuable.
 
-The path isn't startup vs. Google. It's startup AND Google.
+The path isn't startup vs Google.
 
-Both worlds need each other. And you need both worlds.
+It's startup AND Google.
+
+Both worlds need each other. You need both worlds.
 
 ---
 
-*What's your experience with different company environments? I'd love to hear how they've shaped your engineering perspective.*`,__vite_glob_0_2=`---
-title: "The Art of Problem-Solving in Tech"
-slug: "art-of-problem-solving-tech"
+*What's your experience with different company cultures? Drop me a line. I love hearing how different environments shaped people's careers.*`,__vite_glob_0_2=`---
+title: "How to Solve Any Tech Problem (Without Losing Your Mind)"
+slug: "solve-tech-problems-systematically"
 date: "2024-10-22"
-excerpt: "3 AM. Production is down. Users are angry. Here's the systematic approach that saved my career (and my sanity)."
+excerpt: "3 AM production crisis taught me the 5-step system that turns chaos into solutions. Here's how to debug like a pro."
 heroImage: "art-of-problem-solving-tech.jpg"
 tags: ["Problem Solving", "Skills", "Career", "Engineering"]
 ---
 
-# The Art of Problem-Solving in Tech
+# How to Solve Any Tech Problem (Without Losing Your Mind)
 
-3:17 AM. My phone buzzes.
+3:17 AM. Phone buzzes.
 
-"Production is down. Users can't log in. Revenue dropping fast."
+"Production down. Users locked out. Revenue tanking."
 
-I'm wide awake instantly. Heart racing. Mind blank.
+Heart racing. Mind blank. Classic panic mode.
 
-This was my first major production incident. I panicked, made random changes, and made everything worse.
+I threw random fixes at the wall. Made everything worse. Learned the hard way that **panic kills problem-solving.**
 
-That night taught me: **panic is the enemy of problem-solving.**
+Here's the system I wish I'd known that night.
 
-## The SOLVE Framework
+## The 5-Step SOLVE Method
 
-After that disaster, I developed a systematic approach:
+After that disaster, I built a simple system:
 
-- **S**top and assess
-- **O**utline the problem
-- **L**ist possible solutions
-- **V**erify with data
-- **E**xecute and monitor
+**S**top and breathe  
+**O**utline what's broken  
+**L**ist your options  
+**V**erify with data  
+**E**xecute and watch  
 
-## S - Stop and Assess
+It works every time.
 
-**First rule: Don't panic.**
+## Step 1: Stop and Breathe
 
-Take 60 seconds to breathe and assess:
-- How bad is this really?
+**Don't be a hero. Be smart.**
+
+60 seconds of thinking beats 60 minutes of panic.
+
+Ask yourself:
+- How bad is this?
 - Who's affected?
-- Is it getting worse?
-- Do I have time to think?
+- Is it spreading?
+- Can I think clearly?
 
-That 60 seconds can save hours of thrashing.
+**Quick triage:**
+- Critical: Production down
+- High: Performance issues
+- Medium: Features broken
+- Low: Minor bugs
 
-**Triage everything:**
-- **Critical:** Production down
-- **High:** Performance degraded
-- **Medium:** Non-critical features broken
-- **Low:** Minor bugs
+That minute of clarity saves hours of chaos.
 
-## O - Outline the Problem
+## Step 2: Define the Real Problem
 
-**Vague problems lead to vague solutions.**
+**Vague problems = vague solutions.**
 
-Instead of "the app is slow," be specific:
+Bad: "App is slow"
+Good: "Search takes 4+ seconds for 3-word queries, hitting 60% of users during peak hours, dropping engagement 25%"
 
-"The search API returns results in 4+ seconds for queries with 3+ words, affecting 60% of traffic during peak hours, causing 25% drop in engagement."
+**Ask the 5Ws:**
+- What's actually broken?
+- Who's affected?
+- When does it happen?
+- Where in the system?
+- Why does it matter?
 
-**Use the 5Ws:**
-- **What** exactly is broken?
-- **Who** is experiencing this?
-- **When** does it happen?
-- **Where** in the system?
-- **Why** does it matter?
+Specificity is your superpower.
 
-## L - List Possible Solutions
+## Step 3: Brainstorm Solutions
 
-**Never fall in love with your first idea.**
+**Your first idea is rarely your best idea.**
 
-Generate options using the 3-Horizon approach:
+Think in three timeframes:
 
-**Quick Fixes (Hours):** Restart services, increase capacity, add caching
-**Medium-term (Weeks):** Code optimizations, database improvements
-**Long-term (Months):** System redesign, technology migration
+**Quick wins (hours):** Restart, scale up, add cache  
+**Medium fixes (weeks):** Optimize code, tune database  
+**Long-term (months):** Redesign, migrate tech  
 
-**Rate each solution (1-5):**
-- Speed of implementation
-- Impact on the problem
-- Risk level
-- Resource cost
+**Score each option:**
+- How fast to implement?
+- How much impact?
+- How risky?
+- What's the cost?
 
-## V - Verify with Data
+More options = better decisions.
 
-**Measure twice, cut once.**
+## Step 4: Test Before You Wreck
 
-Before implementing:
-1. Establish baseline metrics
-2. Define success criteria
+**Data beats gut feelings.**
+
+Before you change anything:
+1. Record current metrics
+2. Define what success looks like
 3. Set up monitoring
-4. Plan rollback procedures
+4. Plan your escape route
 
-**Test small:** Route 5% traffic → measure → scale gradually
+**Start small:** 5% traffic → measure → scale up
 
-## E - Execute and Monitor
+Slow and steady wins the debugging race.
 
-**Implementation is just the beginning.**
+## Step 5: Deploy and Watch
 
-**Gradual rollout:** Staging → 5% → 25% → 50% → 100%
+**Shipping the fix is just the start.**
 
-**Post-fix review:**
-- Did it solve the problem?
-- Any unexpected side effects?
-- What would we do differently?
-- How do we prevent recurrence?
+**Roll out gradually:** Staging → 5% → 25% → 50% → 100%
 
-## Real-World Examples
+**After the fix:**
+- Did it work?
+- Any surprises?
+- What would you change?
+- How do we prevent this?
 
-### The Database Crisis
-**Problem:** API response times spiking to 10+ seconds
-**Quick Fix:** Redis caching (down to 2 seconds)
-**Long-term:** Database sharding (consistent 100ms)
-**Lesson:** Layer solutions. Quick fixes buy time for proper fixes.
+The best debuggers learn from every incident.
 
-### The Memory Leak
-**Problem:** Servers crashing every 6 hours
-**Root Cause:** Event listeners not cleaned up
-**Solution:** Proper cleanup in component unmount
-**Lesson:** Tools beat guessing. Use profilers.
+## War Stories
 
-## Power Techniques
+### The 10-Second API
+**Crisis:** Database queries taking forever  
+**Band-aid:** Redis cache (2 seconds)  
+**Real fix:** Database sharding (100ms)  
+**Lesson:** Quick fixes buy time for real solutions
 
-### Rubber Duck Debugging 2.0
-1. Explain the problem in simple terms
-2. Walk through what you've tried
-3. Explain your theory
-4. Solution often becomes obvious
+### The 6-Hour Crash
+**Crisis:** Servers dying like clockwork  
+**Root cause:** Memory leaks from event listeners  
+**Fix:** Proper cleanup on unmount  
+**Lesson:** Profilers > guessing
 
-### Enhanced 5 Whys
-Don't just ask "why"—also ask "what if" and "how might we"
+Every disaster teaches something valuable.
 
-### Constraint Removal
-When stuck, temporarily ignore constraints:
-- What if budget wasn't an issue?
-- What if we could rewrite everything?
+## Pro Debugging Tricks
 
-Then add constraints back, keeping the best ideas.
+### Talk to the Duck
+1. Explain the problem out loud
+2. Walk through what you tried
+3. Share your theory
+4. Watch the solution appear
 
-## Building Your Skills
+### Ask Better Questions
+Don't just ask "why." Try "what if" and "how might we."
 
-**Practice regularly:**
-- Debug open-source issues
-- Solve coding challenges systematically
-- Help teammates with problems
+### Remove All Limits
+Stuck? Pretend you have unlimited budget and time. What would you do?
 
-**Learn from others:**
-- Read company post-mortems
+Then add constraints back. Keep the good ideas.
+
+Sometimes impossible solutions spark possible ones.
+
+## Level Up Your Debugging
+
+**Practice everywhere:**
+- Fix open-source bugs
+- Solve coding puzzles systematically
+- Help teammates debug
+
+**Learn from the best:**
+- Read post-mortems
 - Join SRE communities
-- Study how experts approach problems
+- Study expert approaches
 
-**Build your toolkit:**
-- Monitoring (know what's happening)
-- Logging (understand what went wrong)
-- Profiling (find bottlenecks)
-- Testing (verify solutions)
+**Build your arsenal:**
+- Monitoring: Know what's happening
+- Logging: Understand what broke
+- Profiling: Find the bottlenecks
+- Testing: Verify your fixes
 
-## The Right Mindset
+Great debuggers are made, not born.
 
-**Curiosity over Certainty** → Ask questions, don't assume
-**Collaboration over Hero Complex** → Involve others
-**Learning over Blame** → Focus on prevention
-**Systems Thinking** → Address root causes
+## The Debugging Mindset
 
-## Your Checklist
+**Stay curious.** Ask questions instead of assuming answers.
 
-□ Take a breath and assess
-□ Define the problem specifically
-□ Generate multiple solutions
-□ Evaluate options objectively
-□ Start with lowest-risk solution
-□ Monitor results closely
-□ Document learnings
-□ Share knowledge
+**Work together.** Two brains beat one every time.
 
-## The Bottom Line
+**Learn, don't blame.** Focus on preventing the next incident.
 
-Problem-solving isn't about being the smartest person in the room. It's about being systematic, curious, and persistent.
+**Think systems.** Fix root causes, not symptoms.
 
-Every expert was once a beginner. Every elegant solution started messy.
+Your attitude determines your debugging altitude.
 
-The goal isn't perfection—it's continuous improvement.
+## Your Debug Checklist
 
-One problem at a time.
+□ Stop and breathe  
+□ Define the exact problem  
+□ List multiple solutions  
+□ Pick the safest option  
+□ Test small first  
+□ Monitor everything  
+□ Document what you learned  
+□ Share with the team  
+
+Print this. Stick it on your monitor.
+
+## The Real Truth
+
+Debugging isn't about being the smartest person in the room.
+
+It's about being systematic. Curious. Persistent.
+
+Every expert started as a beginner. Every elegant fix began as a mess.
+
+You don't need perfection. You need progress.
+
+One bug at a time.
 
 ---
 
-*What's the most challenging problem you've solved recently? I'd love to hear your approach.*`;var buffer={},base64Js={};base64Js.byteLength=byteLength;base64Js.toByteArray=toByteArray;base64Js.fromByteArray=fromByteArray;var lookup=[],revLookup=[],Arr=typeof Uint8Array<"u"?Uint8Array:Array,code="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(var i$1=0,len=code.length;i$1<len;++i$1)lookup[i$1]=code[i$1],revLookup[code.charCodeAt(i$1)]=i$1;revLookup[45]=62;revLookup[95]=63;function getLens(e){var o=e.length;if(o%4>0)throw new Error("Invalid string. Length must be a multiple of 4");var s=e.indexOf("=");s===-1&&(s=o);var a=s===o?0:4-s%4;return[s,a]}function byteLength(e){var o=getLens(e),s=o[0],a=o[1];return(s+a)*3/4-a}function _byteLength(e,o,s){return(o+s)*3/4-s}function toByteArray(e){var o,s=getLens(e),a=s[0],c=s[1],g=new Arr(_byteLength(e,a,c)),et=0,tt=c>0?a-4:a,nt;for(nt=0;nt<tt;nt+=4)o=revLookup[e.charCodeAt(nt)]<<18|revLookup[e.charCodeAt(nt+1)]<<12|revLookup[e.charCodeAt(nt+2)]<<6|revLookup[e.charCodeAt(nt+3)],g[et++]=o>>16&255,g[et++]=o>>8&255,g[et++]=o&255;return c===2&&(o=revLookup[e.charCodeAt(nt)]<<2|revLookup[e.charCodeAt(nt+1)]>>4,g[et++]=o&255),c===1&&(o=revLookup[e.charCodeAt(nt)]<<10|revLookup[e.charCodeAt(nt+1)]<<4|revLookup[e.charCodeAt(nt+2)]>>2,g[et++]=o>>8&255,g[et++]=o&255),g}function tripletToBase64(e){return lookup[e>>18&63]+lookup[e>>12&63]+lookup[e>>6&63]+lookup[e&63]}function encodeChunk(e,o,s){for(var a,c=[],g=o;g<s;g+=3)a=(e[g]<<16&16711680)+(e[g+1]<<8&65280)+(e[g+2]&255),c.push(tripletToBase64(a));return c.join("")}function fromByteArray(e){for(var o,s=e.length,a=s%3,c=[],g=16383,et=0,tt=s-a;et<tt;et+=g)c.push(encodeChunk(e,et,et+g>tt?tt:et+g));return a===1?(o=e[s-1],c.push(lookup[o>>2]+lookup[o<<4&63]+"==")):a===2&&(o=(e[s-2]<<8)+e[s-1],c.push(lookup[o>>10]+lookup[o>>4&63]+lookup[o<<2&63]+"=")),c.join("")}var ieee754={};/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */ieee754.read=function(e,o,s,a,c){var g,et,tt=c*8-a-1,nt=(1<<tt)-1,rt=nt>>1,it=-7,lt=s?c-1:0,st=s?-1:1,dt=e[o+lt];for(lt+=st,g=dt&(1<<-it)-1,dt>>=-it,it+=tt;it>0;g=g*256+e[o+lt],lt+=st,it-=8);for(et=g&(1<<-it)-1,g>>=-it,it+=a;it>0;et=et*256+e[o+lt],lt+=st,it-=8);if(g===0)g=1-rt;else{if(g===nt)return et?NaN:(dt?-1:1)*(1/0);et=et+Math.pow(2,a),g=g-rt}return(dt?-1:1)*et*Math.pow(2,g-a)};ieee754.write=function(e,o,s,a,c,g){var et,tt,nt,rt=g*8-c-1,it=(1<<rt)-1,lt=it>>1,st=c===23?Math.pow(2,-24)-Math.pow(2,-77):0,dt=a?0:g-1,xt=a?1:-1,gt=o<0||o===0&&1/o<0?1:0;for(o=Math.abs(o),isNaN(o)||o===1/0?(tt=isNaN(o)?1:0,et=it):(et=Math.floor(Math.log(o)/Math.LN2),o*(nt=Math.pow(2,-et))<1&&(et--,nt*=2),et+lt>=1?o+=st/nt:o+=st*Math.pow(2,1-lt),o*nt>=2&&(et++,nt/=2),et+lt>=it?(tt=0,et=it):et+lt>=1?(tt=(o*nt-1)*Math.pow(2,c),et=et+lt):(tt=o*Math.pow(2,lt-1)*Math.pow(2,c),et=0));c>=8;e[s+dt]=tt&255,dt+=xt,tt/=256,c-=8);for(et=et<<c|tt,rt+=c;rt>0;e[s+dt]=et&255,dt+=xt,et/=256,rt-=8);e[s+dt-xt]|=gt*128};/*!
+*What's the toughest problem you've cracked lately? Drop me a line. I love hearing war stories.*`;var buffer={},base64Js={};base64Js.byteLength=byteLength;base64Js.toByteArray=toByteArray;base64Js.fromByteArray=fromByteArray;var lookup=[],revLookup=[],Arr=typeof Uint8Array<"u"?Uint8Array:Array,code="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(var i$1=0,len=code.length;i$1<len;++i$1)lookup[i$1]=code[i$1],revLookup[code.charCodeAt(i$1)]=i$1;revLookup[45]=62;revLookup[95]=63;function getLens(e){var o=e.length;if(o%4>0)throw new Error("Invalid string. Length must be a multiple of 4");var s=e.indexOf("=");s===-1&&(s=o);var a=s===o?0:4-s%4;return[s,a]}function byteLength(e){var o=getLens(e),s=o[0],a=o[1];return(s+a)*3/4-a}function _byteLength(e,o,s){return(o+s)*3/4-s}function toByteArray(e){var o,s=getLens(e),a=s[0],c=s[1],g=new Arr(_byteLength(e,a,c)),et=0,tt=c>0?a-4:a,nt;for(nt=0;nt<tt;nt+=4)o=revLookup[e.charCodeAt(nt)]<<18|revLookup[e.charCodeAt(nt+1)]<<12|revLookup[e.charCodeAt(nt+2)]<<6|revLookup[e.charCodeAt(nt+3)],g[et++]=o>>16&255,g[et++]=o>>8&255,g[et++]=o&255;return c===2&&(o=revLookup[e.charCodeAt(nt)]<<2|revLookup[e.charCodeAt(nt+1)]>>4,g[et++]=o&255),c===1&&(o=revLookup[e.charCodeAt(nt)]<<10|revLookup[e.charCodeAt(nt+1)]<<4|revLookup[e.charCodeAt(nt+2)]>>2,g[et++]=o>>8&255,g[et++]=o&255),g}function tripletToBase64(e){return lookup[e>>18&63]+lookup[e>>12&63]+lookup[e>>6&63]+lookup[e&63]}function encodeChunk(e,o,s){for(var a,c=[],g=o;g<s;g+=3)a=(e[g]<<16&16711680)+(e[g+1]<<8&65280)+(e[g+2]&255),c.push(tripletToBase64(a));return c.join("")}function fromByteArray(e){for(var o,s=e.length,a=s%3,c=[],g=16383,et=0,tt=s-a;et<tt;et+=g)c.push(encodeChunk(e,et,et+g>tt?tt:et+g));return a===1?(o=e[s-1],c.push(lookup[o>>2]+lookup[o<<4&63]+"==")):a===2&&(o=(e[s-2]<<8)+e[s-1],c.push(lookup[o>>10]+lookup[o>>4&63]+lookup[o<<2&63]+"=")),c.join("")}var ieee754={};/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */ieee754.read=function(e,o,s,a,c){var g,et,tt=c*8-a-1,nt=(1<<tt)-1,rt=nt>>1,it=-7,lt=s?c-1:0,st=s?-1:1,dt=e[o+lt];for(lt+=st,g=dt&(1<<-it)-1,dt>>=-it,it+=tt;it>0;g=g*256+e[o+lt],lt+=st,it-=8);for(et=g&(1<<-it)-1,g>>=-it,it+=a;it>0;et=et*256+e[o+lt],lt+=st,it-=8);if(g===0)g=1-rt;else{if(g===nt)return et?NaN:(dt?-1:1)*(1/0);et=et+Math.pow(2,a),g=g-rt}return(dt?-1:1)*et*Math.pow(2,g-a)};ieee754.write=function(e,o,s,a,c,g){var et,tt,nt,rt=g*8-c-1,it=(1<<rt)-1,lt=it>>1,st=c===23?Math.pow(2,-24)-Math.pow(2,-77):0,dt=a?0:g-1,xt=a?1:-1,gt=o<0||o===0&&1/o<0?1:0;for(o=Math.abs(o),isNaN(o)||o===1/0?(tt=isNaN(o)?1:0,et=it):(et=Math.floor(Math.log(o)/Math.LN2),o*(nt=Math.pow(2,-et))<1&&(et--,nt*=2),et+lt>=1?o+=st/nt:o+=st*Math.pow(2,1-lt),o*nt>=2&&(et++,nt/=2),et+lt>=it?(tt=0,et=it):et+lt>=1?(tt=(o*nt-1)*Math.pow(2,c),et=et+lt):(tt=o*Math.pow(2,lt-1)*Math.pow(2,c),et=0));c>=8;e[s+dt]=tt&255,dt+=xt,tt/=256,c-=8);for(et=et<<c|tt,rt+=c;rt>0;e[s+dt]=et&255,dt+=xt,et/=256,rt-=8);e[s+dt-xt]|=gt*128};/*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <https://feross.org>
