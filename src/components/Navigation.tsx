@@ -69,25 +69,25 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
               onClick={handleAboutClick}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 hover:scale-105 active:scale-95"
             >
               About
             </button>
             <button 
               onClick={handleBlogClick}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 hover:scale-105 active:scale-95"
             >
               Blogs
             </button>
             <button 
               onClick={() => handleSectionClick('journey')}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 hover:scale-105 active:scale-95"
             >
               Journey
             </button>
             <button 
               onClick={() => handleSectionClick('building')}
-              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 rounded-md hover:bg-primary/5 hover:scale-105 active:scale-95"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 ease-out min-h-[44px] px-3 py-2 hover:scale-105 active:scale-95"
             >
               Work
             </button>
